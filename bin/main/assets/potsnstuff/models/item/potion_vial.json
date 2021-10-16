@@ -1,0 +1,7 @@
+{
+	"parent": "item/generated",
+    "textures": {
+    	"layer0": "potsnstuff:items/vial_contents", 
+    	"layer1": "potsnstuff:items/vial_empty" 
+    }
+}
