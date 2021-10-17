@@ -1,97 +1,97 @@
 
 ["Set up which potions can be crafted"]
-	"fuze potion" = true
-	"grounding potion" = true
-	"recall potion" = true
-	"photosynthesis potion" = true
-	"inferno potion" = true
-	"absorption potion" = true
-	"health boost potion" = true
-	"haste potion" = true
-	"iron skin potion" = true
-	"diamond skin potion" = true
-	"projectile immunity potion" = true
-	"blast immunity potion" = true
 	"undying potion" = true
-	"frailness potion" = true
-	"flight potion" = true
-	"aqua potion" = true
-	"hells touch potion" = true
-	"clense potion" = true
+	"health boost potion" = true
+	"absorption potion" = true
+	"diamond skin potion" = true
 	#clense must be enabled for cure effect
 	"cure potion" = true
+	"fuze potion" = true
+	"recall potion" = true
+	"haste potion" = true
+	"blast immunity potion" = true
+	"frailness potion" = true
+	"grounding potion" = true
+	"flight potion" = true
+	"lightning in a bottle" = true
+	"launching potion" = true
+	"iron skin potion" = true
+	"aqua potion" = true
+	"hells touch potion" = true
 	#clense must be enabled for nullify effect
 	"nullify potion" = true
-	"launching potion" = true
-	"lightning in a bottle" = true
+	"photosynthesis potion" = true
+	"inferno potion" = true
+	"clense potion" = true
+	"projectile immunity potion" = true
 
 #effect level range is [0-5]. Time is set as 100 = 5 seconds
 [values]
 
+	[values."recall effect"]
+		"recall long time" = 6000
+		"recall normal time" = 600
+
+	[values."flight effect"]
+		"flight long time" = 1200
+		"flight normal time" = 600
+
 	[values."fuze effect"]
-		"fuze normal time" = 400
 		"fuze normal level" = 2
+		"fuze normal time" = 400
 		"fuze strong level" = 5
 
-	[values."grounding effect"]
-		"grounding normal time" = 600
-		"grounding long time" = 1200
+	[values."undying effect"]
+		"undying normal time" = 1200
+		"undying long time" = 6000
 
-	[values."recall effect"]
-		"recall normal time" = 600
-		"recall long time" = 6000
+	[values."projectile immunity effect"]
+		"reflect long time" = 6000
+		"reflect normal time" = 1200
 
 	[values."photosynthesis effect"]
 		"photosynthesis normal time" = 1200
 		"photosynthesis long time" = 6000
 
 	[values."inferno effect"]
-		"inferno normal time" = 400
 		"inferno long time" = 800
-
-	[values."absorption effect"]
-		"absorption normal time" = 1200
-		"absorption long time" = 12000
-		"absorption normal level" = 2
-		"absorption strong level" = 4
-
-	[values."health boost effect"]
-		"health boost normal time" = 1200
-		"health boost long time" = 12000
-		"health boost normal level" = 2
-		"health boost strong level" = 4
+		"inferno normal time" = 400
 
 	[values."haste effect"]
+		"haste strong level" = 4
 		"haste normal time" = 1200
 		"haste long time" = 12000
 		"haste normal level" = 2
-		"haste strong level" = 4
-
-	[values."iron skin effect"]
-		"iron skin normal time" = 1200
-		"iron skin long time" = 12000
 
 	[values."diamond skin effect"]
-		"diamond skin normal time" = 1200
 		"diamond skin long time" = 12000
-
-	[values."projectile immunity effect"]
-		"reflect normal time" = 1200
-		"reflect long time" = 6000
+		"diamond skin normal time" = 1200
 
 	[values."blast immunity effect"]
-		"blast normal time" = 1200
 		"blast long time" = 6000
+		"blast normal time" = 1200
 
-	[values."undying effect"]
-		"undying normal time" = 1200
-		"undying long time" = 6000
+	[values."health boost effect"]
+		"health boost normal time" = 1200
+		"health boost strong level" = 4
+		"health boost long time" = 12000
+		"health boost normal level" = 2
+
+	[values."iron skin effect"]
+		"iron skin long time" = 12000
+		"iron skin normal time" = 1200
 
 	[values."frailness effect"]
 		"frailness normal time" = 600
 		"frailness long time" = 1200
 
-	[values."flight effect"]
-		"flight normal time" = 600
-		"flight long time" = 1200
+	[values."grounding effect"]
+		"grounding normal time" = 600
+		"grounding long time" = 1200
+
+	[values."absorption effect"]
+		"absorption long time" = 12000
+		"absorption strong level" = 4
+		"absorption normal level" = 2
+		"absorption normal time" = 1200
 

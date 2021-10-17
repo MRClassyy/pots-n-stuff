@@ -1,5 +1,6 @@
 package net.usernaem.potsnstuff.client.gui;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -9,7 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.usernaem.potsnstuff.PotsNStuff;
 import net.usernaem.potsnstuff.common.containers.PotionBagContainer;
 
-public class PotionBagContainerScreen {/*extends AbstractContainerScreen<PotionBagContainer>{
+public class PotionBagContainerScreen extends AbstractContainerScreen<PotionBagContainer>{
 	private static final ResourceLocation TEXTURE = new ResourceLocation(PotsNStuff.MOD_ID_STRING, "textures/gui/potion_bag.png");
 
     //private final PlayerInventory playerInventory;
@@ -41,12 +42,13 @@ public class PotionBagContainerScreen {/*extends AbstractContainerScreen<PotionB
 
         // Render the GUI texture
         //GlStateManager.color4f(1, 1, 1, 1);
-        minecraft.getTextureManager().bindForSetup(TEXTURE);
+        //minecraft.getTextureManager().bindForSetup(TEXTURE);
+        RenderSystem.setShaderTexture(0, TEXTURE);
         int posX = (this.width - this.getXSize()) / 2;
         int posY = (this.height - this.getYSize()) / 2;
         // blit(posX, posY, minU, minV, maxU, maxV)
         blit(stack, posX, posY, 0, 0, this.getXSize(), this.inventoryRows * 18 + 17);
         blit(stack, posX, posY + this.inventoryRows * 18 + 17, 0, 126, this.getXSize(), 96);
     }
-*/
+
 }

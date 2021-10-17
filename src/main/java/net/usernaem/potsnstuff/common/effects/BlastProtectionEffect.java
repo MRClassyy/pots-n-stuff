@@ -6,7 +6,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 public class BlastProtectionEffect extends MobEffect{
 
 	public BlastProtectionEffect() {
-		super(MobEffectCategory.BENEFICIAL, 3355443);
+		super(MobEffectCategory.BENEFICIAL, 10637133);
 	}
 
 }

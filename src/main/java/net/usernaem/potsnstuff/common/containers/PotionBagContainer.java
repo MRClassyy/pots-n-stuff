@@ -18,7 +18,7 @@ import net.minecraftforge.items.SlotItemHandler;
 import net.usernaem.potsnstuff.common.items.PotionBagItem;
 import net.usernaem.potsnstuff.core.init.ConteinerTypeInit;
 
-public class PotionBagContainer  {/*extends AbstractContainerMenu{
+public class PotionBagContainer  extends AbstractContainerMenu{
 	private final ItemStack item;
     private final IItemHandler itemHandler;
     private int blocked = -1;
@@ -85,11 +85,11 @@ public class PotionBagContainer  {/*extends AbstractContainerMenu{
     }
 
     /**
-     * Gets the number of backpack inventory rows. This assumes 9 slots per row.
+     * Gets the number of bag inventory rows. This assumes 8 slots per row.
      *
      * @return The number of rows of backpack slots
      */
-    /*public int getInventoryRows() {
+    public int getInventoryRows() {
         return this.itemHandler.getSlots() / 8;
     }
 
@@ -152,7 +152,7 @@ public class PotionBagContainer  {/*extends AbstractContainerMenu{
         }
 
         slot.onTake(playerIn, newStack);
-        return 
+        return newStack;
     }
 
     @Override
@@ -175,10 +175,10 @@ public class PotionBagContainer  {/*extends AbstractContainerMenu{
     }
 
     private boolean canTake(int slotId, Slot slot, int button, Player player, ClickType clickType) {
-        if (slotId == blocked || slotId <= itemHandler.getSlots() - 1 && isPotionBag(player.getInventory().getCarried())) {
+        if (slotId == blocked || slotId <= itemHandler.getSlots() - 1 && isPotionBag(this.getCarried())) {
             return false;
         }
-        if(!filtered(slotId, player.getInventory().getCarried().getItem())) 
+        if(!filtered(slotId, this.getCarried().getItem())) 
         	return false;
 
         // Hotbar swapping via number keys
@@ -209,6 +209,6 @@ public class PotionBagContainer  {/*extends AbstractContainerMenu{
     	}
     	return true;
     }
-	*/
+	
     
 }

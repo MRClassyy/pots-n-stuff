@@ -8,7 +8,7 @@ import net.minecraft.world.effect.MobEffects;
 public class InfernoEffect extends MobEffect{
 
 	public InfernoEffect() {
-		super(MobEffectCategory.HARMFUL, 16738048);
+		super(MobEffectCategory.HARMFUL, 16038940);
 	}
 	
 	@Override
@@ -16,7 +16,7 @@ public class InfernoEffect extends MobEffect{
 		if(amplify != 0) {
 			entity.removeEffect(MobEffects.FIRE_RESISTANCE);
 		}
-		if(!entity.isOnFire()) {
+		if(!entity.isOnFire() && !entity.isInWaterRainOrBubble()) {
 			entity.setSecondsOnFire(5);
 		}
 	}

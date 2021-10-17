@@ -6,7 +6,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 public class ReflectEffect extends MobEffect{
 
 	public ReflectEffect() {
-		super(MobEffectCategory.BENEFICIAL, 7629488);
+		super(MobEffectCategory.BENEFICIAL, 10535056);
 	}
 
 }

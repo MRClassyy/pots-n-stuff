@@ -15,7 +15,7 @@ public class ClientEventBusSubscriber {
 	
 	@SubscribeEvent
 	 public static void registerScreens(FMLClientSetupEvent event) {
-	        //MenuScreens.register(ConteinerTypeInit.POTION_BAG.get(), PotionBagContainerScreen::new);
+	        MenuScreens.register(ConteinerTypeInit.POTION_BAG.get(), PotionBagContainerScreen::new);
 	    }
 	
 }

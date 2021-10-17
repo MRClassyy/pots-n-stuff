@@ -14,7 +14,6 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.usernaem.potsnstuff.common.containers.PotionBagContainer;
 
-import net.minecraft.world.item.Item.Properties;
 
 public class PotionBagItem extends Item{
 
@@ -47,10 +46,10 @@ public class PotionBagItem extends Item{
     public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
         if (!worldIn.isClientSide) {
         	
-            /*playerIn.openMenu(new SimpleMenuProvider(
+            playerIn.openMenu(new SimpleMenuProvider(
                     (id, playerInventory, player) -> new PotionBagContainer(id, playerInventory),
                     new TranslatableComponent("container.potsnstuff.potion_bag")
-            ));*/
+            ));
         }
         return new InteractionResultHolder<>(InteractionResult.SUCCESS, playerIn.getItemInHand(handIn));
     }

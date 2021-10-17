@@ -1,18 +1,12 @@
 package net.usernaem.potsnstuff.common.effects;
 
-import java.util.List;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.level.Level;
 
 public class ClairvoyanceEffect extends MobEffect{
 	
-	private Boolean clearall= false;
+	//private Boolean clearall= false;
 	public ClairvoyanceEffect() {
 		super(MobEffectCategory.BENEFICIAL, 8421504);
 	}
