@@ -1,34 +1,37 @@
-[15Oct2021 22:55:28.818] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 1.17, --assetsDir, C:\Users\Vuki9\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 37.0.84, --fml.mcVersion, 1.17.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20210706.113038]
-[15Oct2021 22:55:28.826] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 9.0.7+91+master.8569cdf starting: java version 16.0.2 by Eclipse Foundation
-[15Oct2021 22:55:29.097] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.4 Source=union:/C:/Users/Vuki9/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.4/4ec7d77d9ab32596ca0b78bb123956734767e3a/mixin-0.8.4.jar%2325! Service=ModLauncher Env=CLIENT
-[15Oct2021 22:55:31.400] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\Vuki9\.gradle\caches\forge_gradle\assets, --assetIndex, 1.17]
-[22:55:40] [Render thread/WARN]: Assets URL 'union:/C:/Users/Vuki9/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.17.1-37.0.84_mapped_official_1.17.1/forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!/assets/.mcassetsroot' uses unexpected schema
-[22:55:40] [Render thread/WARN]: Assets URL 'union:/C:/Users/Vuki9/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.17.1-37.0.84_mapped_official_1.17.1/forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!/data/.mcassetsroot' uses unexpected schema
-[15Oct2021 22:55:40.379] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[22:55:40] [Render thread/INFO]: Setting user: Dev
-[22:55:40] [Render thread/INFO]: Backend library: LWJGL version 3.2.2 SNAPSHOT
-[22:55:41] [modloading-worker-2/INFO]: Forge mod loading, version 37.0.84, for MC 1.17.1 with MCP 20210706.113038
-[22:55:41] [modloading-worker-2/INFO]: MinecraftForge v37.0.84 Initialized
-[22:55:42] [Render thread/INFO]: HELLO from Register Block
-[15Oct2021 22:55:43.981] [Render thread/INFO] [com.mojang.text2speech.NarratorWindows/]: Narrator library for x64 successfully loaded
-[22:55:44] [Render thread/INFO]: Reloading ResourceManager: Default, Mod Resources
-[22:55:59] [Worker-Main-6/INFO]: HELLO FROM PREINIT
-[22:55:59] [Worker-Main-6/INFO]: DIRT BLOCK >> minecraft:dirt
-[15Oct2021 22:55:59.309] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
-[22:55:59] [Worker-Main-5/INFO]: Hello world from the MDK
-[22:55:59] [Worker-Main-5/INFO]: Got IMC [Hello world]
-[15Oct2021 22:56:00.116] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: BETA_OUTDATED Current: 37.0.84 Target: 37.0.95
-[22:56:01] [Render thread/INFO]: OpenAL initialized.
-[22:56:01] [Render thread/INFO]: Sound engine started
-[22:56:02] [Render thread/INFO]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[22:56:02] [Render thread/INFO]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
-[22:56:02] [Render thread/INFO]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[22:56:02] [Render thread/INFO]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[22:56:02] [Render thread/INFO]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[22:56:02] [Render thread/INFO]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[22:56:02] [Render thread/INFO]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[22:56:04] [Render thread/INFO]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
-[22:56:04] [Render thread/INFO]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[22:56:04] [Render thread/INFO]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[22:56:04] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
-[22:56:30] [Render thread/INFO]: Stopping!
+[20Dec2021 00:45:47.557] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 1.17, --assetsDir, C:\Users\Vuki9\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 37.0.84, --fml.mcVersion, 1.17.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20210706.113038]
+[20Dec2021 00:45:47.565] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 9.0.7+91+master.8569cdf starting: java version 16.0.2 by Eclipse Foundation
+[20Dec2021 00:45:47.805] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.4 Source=union:/C:/Users/Vuki9/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.4/4ec7d77d9ab32596ca0b78bb123956734767e3a/mixin-0.8.4.jar%2325! Service=ModLauncher Env=CLIENT
+[20Dec2021 00:45:52.291] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\Vuki9\.gradle\caches\forge_gradle\assets, --assetIndex, 1.17]
+[00:46:03] [Render thread/WARN]: Assets URL 'union:/C:/Users/Vuki9/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.17.1-37.0.84_mapped_official_1.17.1/forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!/assets/.mcassetsroot' uses unexpected schema
+[00:46:03] [Render thread/WARN]: Assets URL 'union:/C:/Users/Vuki9/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.17.1-37.0.84_mapped_official_1.17.1/forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!/data/.mcassetsroot' uses unexpected schema
+[20Dec2021 00:46:03.086] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[00:46:03] [Render thread/INFO]: Setting user: Dev
+[00:46:03] [Render thread/INFO]: Backend library: LWJGL version 3.2.2 SNAPSHOT
+[00:46:04] [modloading-worker-1/INFO]: Forge mod loading, version 37.0.84, for MC 1.17.1 with MCP 20210706.113038
+[00:46:04] [modloading-worker-1/INFO]: MinecraftForge v37.0.84 Initialized
+[20Dec2021 00:46:07.165] [Render thread/INFO] [com.mojang.text2speech.NarratorWindows/]: Narrator library for x64 successfully loaded
+[00:46:07] [Render thread/INFO]: Reloading ResourceManager: Default, Mod Resources
+[20Dec2021 00:46:07.733] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[20Dec2021 00:46:08.900] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 37.0.84 Target: 37.1.1
+[00:46:20] [Worker-Main-8/ERROR]: Using missing texture, unable to load potsnstuff:textures/mob_effect/hellstouch.png : java.io.FileNotFoundException: potsnstuff:textures/mob_effect/hellstouch.png
+[00:46:20] [Worker-Main-8/ERROR]: Using missing texture, unable to load potsnstuff:textures/mob_effect/nullify.png : java.io.FileNotFoundException: potsnstuff:textures/mob_effect/nullify.png
+[00:46:20] [Worker-Main-8/ERROR]: Using missing texture, unable to load potsnstuff:textures/mob_effect/clense.png : java.io.FileNotFoundException: potsnstuff:textures/mob_effect/clense.png
+[00:46:20] [Worker-Main-8/ERROR]: Using missing texture, unable to load potsnstuff:textures/mob_effect/bomb.png : java.io.FileNotFoundException: potsnstuff:textures/mob_effect/bomb.png
+[00:46:20] [Worker-Main-8/ERROR]: Using missing texture, unable to load potsnstuff:textures/mob_effect/aqua.png : java.io.FileNotFoundException: potsnstuff:textures/mob_effect/aqua.png
+[00:46:20] [Worker-Main-8/ERROR]: Using missing texture, unable to load potsnstuff:textures/mob_effect/lightning.png : java.io.FileNotFoundException: potsnstuff:textures/mob_effect/lightning.png
+[00:46:20] [Worker-Main-8/ERROR]: Using missing texture, unable to load potsnstuff:textures/mob_effect/launched.png : java.io.FileNotFoundException: potsnstuff:textures/mob_effect/launched.png
+[00:46:20] [Worker-Main-8/ERROR]: Using missing texture, unable to load potsnstuff:textures/mob_effect/cure.png : java.io.FileNotFoundException: potsnstuff:textures/mob_effect/cure.png
+[00:46:24] [Render thread/INFO]: OpenAL initialized.
+[00:46:24] [Render thread/INFO]: Sound engine started
+[00:46:25] [Render thread/INFO]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[00:46:25] [Render thread/INFO]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
+[00:46:25] [Render thread/INFO]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[00:46:25] [Render thread/INFO]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[00:46:25] [Render thread/INFO]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[00:46:25] [Render thread/INFO]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[00:46:25] [Render thread/INFO]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[00:46:27] [Render thread/INFO]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[00:46:27] [Render thread/INFO]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[00:46:27] [Render thread/INFO]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[00:46:28] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
+[00:47:20] [Render thread/INFO]: Stopping!

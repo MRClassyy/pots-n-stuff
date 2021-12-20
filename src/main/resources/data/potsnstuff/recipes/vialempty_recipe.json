@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        " G ",
+        " G "
+    ],
+    "key": {
+        "#": {
+            "tag": "minecraft:wooden_buttons"
+        },
+        "G": {
+            "item": "minecraft:glass"
+        }
+    },
+    "result": {
+        "item": "potsnstuff:vial_empty",
+        "count": 4
+    }
+}
