@@ -9,7 +9,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class LaunchingEffect extends InstantenousMobEffect{
 	public LaunchingEffect() {
-		super(MobEffectCategory.NEUTRAL, 3735418);
+		super(MobEffectCategory.NEUTRAL, 11974326);
 	}
 
 	

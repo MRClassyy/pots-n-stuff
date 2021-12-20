@@ -9,7 +9,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 public class FlightEffect extends MobEffect{
 
 	public FlightEffect() {
-		super(MobEffectCategory.BENEFICIAL, 16777215);
+		super(MobEffectCategory.BENEFICIAL, 3780351);
 	}
 
 	@Override

@@ -29,5 +29,5 @@ public class RecepiesInit {
 
 	 public static final RegistryObject<RecipeSerializer<PotionVialRecipe>> POTION_VIAL_OBJECT = RECIPE_SERIALIZERS.register("potion_vial_recipe", PotionVialRecipe.Serializer::new);
 	 public static final RegistryObject<RecipeSerializer<PotionMarbleRecipe>> POTION_MARBL_OBJECT = RECIPE_SERIALIZERS.register("potion_marble_recipe", PotionMarbleRecipe.Serializer::new);
-		
+	 	
 }

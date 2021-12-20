@@ -14,15 +14,13 @@ import net.minecraftforge.common.brewing.IBrewingRecipe;
 
 public class PotionRecipeSetup {
 	
-	public static void addPotionRecipes(Potion basePotion,Item baseItem, Potion mainPotion,@Nullable Potion longPotion,@Nullable Potion strongPotion, Boolean canBeCrafted){
-        if(canBeCrafted) {
-			BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(basePotion, baseItem, mainPotion));
+	public static void addPotionRecipes(Potion basePotion,Item baseItem, Potion mainPotion,@Nullable Potion longPotion,@Nullable Potion strongPotion){
+        BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(basePotion, baseItem, mainPotion));
 		if(longPotion != null)
 			BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(mainPotion, Items.REDSTONE, longPotion));
 		if(strongPotion != null)
 			BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(mainPotion, Items.GLOWSTONE_DUST, strongPotion));
 
-        }
     }
 	
 	private static class BetterBrewingRecipe extends BrewingRecipe implements IBrewingRecipe{

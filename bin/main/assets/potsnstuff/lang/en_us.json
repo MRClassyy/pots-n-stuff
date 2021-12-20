@@ -14,6 +14,7 @@
 	"item.minecraft.tipped_arrow.effect.strong_fuze": "Arrow of Explosion",
 	
 	"effect.potsnstuff.bomb": "bomb",
+	"death.attack.BombDamage": "%s exploaded",
 	
 	"effect.potsnstuff.grounded": "grounded",
 	"item.minecraft.potion.effect.grounding": "Potion of Grounding",
@@ -38,16 +39,6 @@
 	"item.minecraft.lingering_potion.effect.strong_launch": "Lingering Potion of Launching",
 	"item.minecraft.tipped_arrow.effect.launch": "Arrow of Launching",
 	"item.minecraft.tipped_arrow.effect.strong_launch": "Arrow of Launching",
-	
-	"effect.potsnstuff.stunned": "stunned",
-	"item.minecraft.potion.effect.stun": "Potion of Stopping",
-	"item.minecraft.potion.effect.long_stun": "Potion of Stopping",
-	"item.minecraft.splash_potion.effect.stun": "Splash Potion of Stopping",
-	"item.minecraft.splash_potion.effect.long_stun": "Splash Potion of Stopping",
-	"item.minecraft.lingering_potion.effect.stun": "Lingering Potion of Stopping",
-	"item.minecraft.lingering_potion.effect.long_stun": "Lingering Potion of Stopping",
-	"item.minecraft.tipped_arrow.effect.stun": "Arrow of Stopping",
-	"item.minecraft.tipped_arrow.effect.long_stun": "Arrow of Stopping",
 	
 	"item.minecraft.potion.effect.absorption": "Potion of Absorption",
 	"item.minecraft.potion.effect.long_absorption": "Potion of Absorption",
@@ -179,17 +170,7 @@
 	"item.minecraft.tipped_arrow.effect.inferno": "Arrow of Greek Fire",
 	"item.minecraft.tipped_arrow.effect.long_inferno": "Arrow of Greek Fire",
 	"item.minecraft.tipped_arrow.effect.strong_inferno": "Arrow of Greek Fire",
-	
-	"effect.potsnstuff.clairvoyance": "clairvoyance",
-	"item.minecraft.potion.effect.clairvoyance": "Potion of Clairvoyance",
-	"item.minecraft.potion.effect.long_clairvoyance": "Potion of Clairvoyance",
-	"item.minecraft.splash_potion.effect.clairvoyance": "Splash Potion of Clairvoyance",
-	"item.minecraft.splash_potion.effect.long_clairvoyance": "Splash Potion of Clairvoyance",
-	"item.minecraft.lingering_potion.effect.clairvoyance": "Lingering Potion of Clairvoyance",
-	"item.minecraft.lingering_potion.effect.long_clairvoyance": "Lingering Potion of Clairvoyance",
-	"item.minecraft.tipped_arrow.effect.clairvoyance": "Arrow of Clairvoyance",
-	"item.minecraft.tipped_arrow.effect.long_clairvoyance": "Arrow of Clairvoyance",
-	
+
 	"effect.potsnstuff.reflect": "projectile immunity",
 	"item.minecraft.potion.effect.reflection": "Potion of Projectile Immunity",
 	"item.minecraft.potion.effect.long_reflection": "Potion of Projectile Immunity",
@@ -251,6 +232,15 @@
 	"item.minecraft.tipped_arrow.effect.long_flight": "Arrow of Flight",
 	
 	
+	"effect.potsnstuff.floating": "floating",
+	"item.minecraft.potion.effect.floating": "Potion of Levitation",
+	"item.minecraft.potion.effect.long_floating": "Potion of Levitation",
+	"item.minecraft.splash_potion.effect.floating": "Splash Potion of Levitation",
+	"item.minecraft.splash_potion.effect.long_floating": "Splash Potion of Levitation",
+	"item.minecraft.lingering_potion.effect.floating": "Lingering Potion of Levitation",
+	"item.minecraft.lingering_potion.effect.long_floating": "Lingering Potion of Levitation",
+	"item.minecraft.tipped_arrow.effect.floating": "Arrow of Levitation",
+	"item.minecraft.tipped_arrow.effect.long_floating": "Arrow of Levitation",
 	
 	"item.potsnstuff.potion_bag": "Potion Bag",
 	"item.potsnstuff.vial_empty": "Empty Vial",

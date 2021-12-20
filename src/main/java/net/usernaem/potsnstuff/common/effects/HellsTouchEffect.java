@@ -9,7 +9,7 @@ import net.minecraft.world.effect.InstantenousMobEffect;
 public class HellsTouchEffect extends InstantenousMobEffect{
 
 	public HellsTouchEffect() {
-		super(MobEffectCategory.NEUTRAL, 16711680);
+		super(MobEffectCategory.NEUTRAL, 16729600);
 	}
 
 	@Override

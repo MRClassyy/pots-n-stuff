@@ -12,7 +12,7 @@ public class RecallEffect extends MobEffect{
 	private Vec3 posVector3d = null;
 	private String dimensionString = null;
 	public RecallEffect() {
-		super(MobEffectCategory.NEUTRAL, 11584734);
+		super(MobEffectCategory.NEUTRAL, 9332621);
 	}
 
 	
@@ -26,7 +26,7 @@ public class RecallEffect extends MobEffect{
 	@Override
 	public void removeAttributeModifiers(LivingEntity entity, AttributeMap p_111187_2_,
 			int p_111187_3_) {
-		if(posVector3d != null && dimensionString != null && entity.level.dimension().toString().equalsIgnoreCase(dimensionString))
+		if(posVector3d != null && dimensionString != null && entity.level.dimension().toString().equalsIgnoreCase(dimensionString) && !entity.isPassenger())
 			entity.teleportTo(posVector3d.x, posVector3d.y, posVector3d.z);
 	}
 	

@@ -1,5 +1,6 @@
 package net.usernaem.potsnstuff.common.event;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import net.minecraft.world.entity.Entity;
@@ -73,15 +74,24 @@ public class ServerEvents {
 	public static void onEntityDeath(LivingDeathEvent event) {
 		if(event.getEntityLiving().hasEffect(EffectInit.UNDEATH_OBJECT.get())) {
 			LivingEntity entity = event.getEntityLiving();
-			if(entity.getEffect(EffectInit.UNDEATH_OBJECT.get()).getAmplifier() == 0)
-				entity.removeEffect(EffectInit.UNDEATH_OBJECT.get());
-			entity.setHealth(2);
-			entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 4));
-			entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 400, 3));
-			entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 400, 3));
+			boolean boosted = false;
+			if(entity.getEffect(EffectInit.UNDEATH_OBJECT.get()).getAmplifier() != 0)
+				boosted = true;
+			entity.setHealth(4);
+			//hopefully this isnt too much stuff happening in an event
+			  ArrayList<MobEffectInstance> tmpArrayList = new ArrayList<>(entity.getActiveEffects());
+	    	  Iterator<MobEffectInstance> iterator = tmpArrayList.iterator();
+			 while (iterator.hasNext()) {
+	             MobEffectInstance e = iterator.next();
+				 if (!boosted || !(e.getEffect() == EffectInit.UNDEATH_OBJECT.get())) {
+					 	 entity.removeEffect(e.getEffect());
+					 	 iterator.remove();
+		          }
+			 }
+			entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 1));
+			entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 100, 0));
 			event.setCanceled(true);
 		}
 	}
-	//LivingAttackEvent
 	
 }

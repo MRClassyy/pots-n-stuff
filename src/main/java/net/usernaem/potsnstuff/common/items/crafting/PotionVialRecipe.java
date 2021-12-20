@@ -31,8 +31,6 @@ public class PotionVialRecipe extends CustomRecipe{
 			for(int i = 0; i < width; i++) {
 				for( int j = 0; j < height; j++) {
 					ItemStack itemStack = inventory.getItem(i + j * width);
-					/*if(itemStack.isEmpty())
-						return false;*/
 					if((i == 0 && j == 0) || (i == 0 && j == 2) || (i == 2 && j == 0) || (i == 2 && j == 2)) {
 						if(!itemStack.isEmpty())
 							return false;

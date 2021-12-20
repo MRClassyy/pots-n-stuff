@@ -11,8 +11,7 @@ displayName="Pots 'n' Stuff"
 logoFile="icon.png" 
 authors="MrClassyfied" 
 description='''
-Twenty new potions, two new potion bottles and a new potion bag.
-What more could an alchemist ask for.
+A bunch of new potions, two new potion bottles and a new potion bag.
 '''
 [[dependencies.potsnstuff]]
      modId="forge"

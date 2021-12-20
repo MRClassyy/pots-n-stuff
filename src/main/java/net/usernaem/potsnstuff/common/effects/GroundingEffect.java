@@ -9,7 +9,7 @@ import net.minecraft.world.phys.Vec3;
 public class GroundingEffect extends MobEffect {
 
 	public GroundingEffect() {
-		super(MobEffectCategory.NEUTRAL, 4838818);
+		super(MobEffectCategory.NEUTRAL, 7829367);
 	}
 
 	@Override

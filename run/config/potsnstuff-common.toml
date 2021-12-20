@@ -4,6 +4,7 @@
 	"health boost potion" = true
 	"absorption potion" = true
 	"diamond skin potion" = true
+	"levitation potion" = true
 	#clense must be enabled for cure effect
 	"cure potion" = true
 	"fuze potion" = true
@@ -94,4 +95,8 @@
 		"absorption strong level" = 4
 		"absorption normal level" = 2
 		"absorption normal time" = 1200
+
+	[values."levitation effect"]
+		"levitation normal time" = 600
+		"levitation long time" = 1200
 
