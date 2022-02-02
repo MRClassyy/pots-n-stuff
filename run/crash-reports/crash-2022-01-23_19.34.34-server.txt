@@ -1,0 +1,87 @@
+---- Minecraft Crash Report ----
+// There are four lights!
+
+Time: 1/23/22, 7:34 PM
+Description: Exception in server tick loop
+
+java.lang.NoClassDefFoundError: Could not initialize class net.usernaem.potsnstuff.core.data.MyPotStuffAttacher
+	at net.usernaem.potsnstuff.common.event.ServerEvents.AttachCapabilities(ServerEvents.java:102) ~[%2379!:?] {re:classloading}
+	at net.minecraftforge.eventbus.ASMEventHandler_5_ServerEvents_AttachCapabilities_AttachCapabilitiesEvent.invoke(.dynamic) ~[?:?] {}
+	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.3.jar%237!:?] {}
+	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.3.jar%237!:?] {}
+	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:283) ~[eventbus-5.0.3.jar%237!:?] {}
+	at net.minecraftforge.event.ForgeEventFactory.gatherCapabilities(ForgeEventFactory.java:581) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2374%2380!:?] {re:classloading}
+	at net.minecraftforge.event.ForgeEventFactory.gatherCapabilities(ForgeEventFactory.java:575) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2374%2380!:?] {re:classloading}
+	at net.minecraftforge.common.capabilities.CapabilityProvider.doGatherCapabilities(CapabilityProvider.java:85) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2374%2380!:?] {re:classloading}
+	at net.minecraftforge.common.capabilities.CapabilityProvider.gatherCapabilities(CapabilityProvider.java:80) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2374%2380!:?] {re:classloading}
+	at net.minecraftforge.common.capabilities.CapabilityProvider.gatherCapabilities(CapabilityProvider.java:64) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2374%2380!:?] {re:classloading}
+	at net.minecraft.world.entity.Entity.<init>(Entity.java:248) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.world.entity.LivingEntity.<init>(LivingEntity.java:228) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading}
+	at net.minecraft.world.entity.player.Player.<init>(Player.java:170) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.level.ServerPlayer.<init>(ServerPlayer.java:223) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.players.PlayerList.getPlayerForLogin(PlayerList.java:396) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading}
+	at net.minecraft.server.network.ServerLoginPacketListenerImpl.handleAcceptedLogin(ServerLoginPacketListenerImpl.java:120) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading}
+	at net.minecraft.server.network.ServerLoginPacketListenerImpl.tick(ServerLoginPacketListenerImpl.java:69) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading}
+	at net.minecraft.network.Connection.tick(Connection.java:229) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading}
+	at net.minecraft.server.network.ServerConnectionListener.tick(ServerConnectionListener.java:142) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading}
+	at net.minecraft.server.MinecraftServer.tickChildren(MinecraftServer.java:896) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.tickServer(MinecraftServer.java:818) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.server.IntegratedServer.tickServer(IntegratedServer.java:85) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:683) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:258) ~[forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp.jar%2375!:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:831) [?:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.17.1
+	Minecraft Version ID: 1.17.1
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 16.0.2, Eclipse Foundation
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Foundation
+	Memory: 623770112 bytes (594 MiB) / 1950351360 bytes (1860 MiB) up to 4286578688 bytes (4088 MiB)
+	CPUs: 4
+	Processor Vendor: GenuineIntel
+	Processor Name: Intel(R) Core(TM) i5-7400 CPU @ 3.00GHz
+	Identifier: Intel64 Family 6 Model 158 Stepping 9
+	Microarchitecture: Kaby Lake
+	Frequency (GHz): 3.00
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 4
+	Virtual memory max (MB): 19821.45
+	Virtual memory used (MB): 17177.54
+	Swap memory total (MB): 3471.83
+	Swap memory used (MB): 307.40
+	JVM Flags: 2 total; -XX:+ShowCodeDetailsInExceptionMessages -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	Player Count: 0 / 8; []
+	Data Packs: vanilla, mod:forge, mod:potsnstuff
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'forge'
+	ModLauncher: 9.0.7+91+master.8569cdf
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		 mixin PLUGINSERVICE 
+		 eventbus PLUGINSERVICE 
+		 object_holder_definalize PLUGINSERVICE 
+		 runtime_enum_extender PLUGINSERVICE 
+		 capability_token_subclass PLUGINSERVICE 
+		 capability_inject_definalize PLUGINSERVICE 
+		 accesstransformer PLUGINSERVICE 
+		 runtimedistcleaner PLUGINSERVICE 
+		 mixin TRANSFORMATIONSERVICE 
+		 fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		minecraft@1.0
+		javafml@null
+	Mod List: 
+		forge-1.17.1-37.0.84_mapped_official_1.17.1-recomp|Minecraft                     |minecraft                     |1.17.1              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		                                                  |Forge                         |forge                         |37.0.84             |DONE      |Manifest: NOSIGNATURE
+		main                                              |Pots 'n' Stuff                |potsnstuff                    |1.0                 |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: b826c1f1-c11c-4915-a6cb-aa20ec61ef1e
+	FML: 37.0
+	Forge: net.minecraftforge:37.0.84

@@ -66,8 +66,10 @@ public class PotionInit {
     public static final RegistryObject<Potion> LONG_FLIGHT = POTIONS.register("long_flight", () -> new Potion(new MobEffectInstance(EffectInit.FLIGHT_OBJECT.get(), 6000, 0)));
     public static final RegistryObject<Potion> FLOATING = POTIONS.register("floating", () -> new Potion(new MobEffectInstance(MobEffects.LEVITATION, 600, 0)));
     public static final RegistryObject<Potion> LONG_FLOATING = POTIONS.register("long_floating", () -> new Potion(new MobEffectInstance(MobEffects.LEVITATION, 1200, 0)));
-    
-    
+    public static final RegistryObject<Potion> TORMENT = POTIONS.register("torment", () -> new Potion(new MobEffectInstance(EffectInit.TORMENT_OBJECT.get(), 900, 0)));
+    public static final RegistryObject<Potion> LONG_TORMENT = POTIONS.register("long_torment", () -> new Potion(new MobEffectInstance(EffectInit.TORMENT_OBJECT.get(), 1800, 0)));
+    public static final RegistryObject<Potion> STRONG_TORMENT = POTIONS.register("strong_torment", () -> new Potion(new MobEffectInstance(EffectInit.TORMENT_OBJECT.get(), 600, 1)));
+
     
     
     public static void addPotionRecipes(){
@@ -92,6 +94,7 @@ public class PotionInit {
         PotionRecipeSetup.addPotionRecipes(Potions.AWKWARD, Items.ROTTEN_FLESH, FRAIL.get(), LONG_FRAIL.get(), null);
         PotionRecipeSetup.addPotionRecipes(FLOATING.get(), Items.FEATHER, FLIGHT.get(), LONG_FLIGHT.get(), null);
         PotionRecipeSetup.addPotionRecipes(Potions.SLOW_FALLING, Items.FERMENTED_SPIDER_EYE, FLOATING.get(), LONG_FLOATING.get(), null);    
+        PotionRecipeSetup.addPotionRecipes(Potions.AWKWARD, Items.SWEET_BERRIES, TORMENT.get(), LONG_TORMENT.get(), STRONG_TORMENT.get());   
     }
 
    

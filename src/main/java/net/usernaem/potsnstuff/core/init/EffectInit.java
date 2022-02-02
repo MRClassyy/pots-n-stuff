@@ -22,6 +22,7 @@ import net.usernaem.potsnstuff.common.effects.NullifyEffect;
 import net.usernaem.potsnstuff.common.effects.PhotosynthesisEffect;
 import net.usernaem.potsnstuff.common.effects.RecallEffect;
 import net.usernaem.potsnstuff.common.effects.ReflectEffect;
+import net.usernaem.potsnstuff.common.effects.TormentEffect;
 import net.usernaem.potsnstuff.common.effects.UndeathEffect;
 
 public class EffectInit {
@@ -31,7 +32,6 @@ public class EffectInit {
 	public static final RegistryObject<MobEffect> BOMB_OBJECT = EFFECTS.register("bomb", () -> new BombEffect());
 	public static final RegistryObject<MobEffect> GROUNDED_OBJECT = EFFECTS.register("grounded", () -> new GroundingEffect());
 	public static final RegistryObject<MobEffect> LAUNCH_OBJECT = EFFECTS.register("launched", () -> new LaunchingEffect());
-	//public static final RegistryObject<Effect> STUN_OBJECT = EFFECTS.register("stunned", () -> new StunEffect());
 	public static final RegistryObject<MobEffect> AQUA_OBJECT = EFFECTS.register("aqua", () -> new AquaEffect());
 	public static final RegistryObject<MobEffect> HT_OBJECT = EFFECTS.register("hellstouch", () -> new HellsTouchEffect());
 	public static final RegistryObject<MobEffect> CLENSE_OBJECT = EFFECTS.register("clense", () -> new ClenseEffect());
@@ -40,13 +40,13 @@ public class EffectInit {
 	public static final RegistryObject<MobEffect> RECALL_OBJECT = EFFECTS.register("recall", () -> new RecallEffect());
 	public static final RegistryObject<MobEffect> PHOTOSYN_OBJECT = EFFECTS.register("photosynthesis", () -> new PhotosynthesisEffect());
 	public static final RegistryObject<MobEffect> INFERN_OBJECT = EFFECTS.register("inferno", () -> new InfernoEffect());
-	//public static final RegistryObject<Effect> CLAIRVOYANCE_OBJECT = EFFECTS.register("clairvoyance", () -> new ClairvoyanceEffect());
 	public static final RegistryObject<MobEffect> REFLECT_OBJECT = EFFECTS.register("reflect", () -> new ReflectEffect());
 	public static final RegistryObject<MobEffect> BLAST_OBJECT = EFFECTS.register("blast", () -> new BlastProtectionEffect());
 	public static final RegistryObject<MobEffect> UNDEATH_OBJECT = EFFECTS.register("undeath", () -> new UndeathEffect());
 	public static final RegistryObject<MobEffect> LIGHTNING_OBJECT = EFFECTS.register("lightning", () -> new LightningEffect());
 	public static final RegistryObject<MobEffect> FRAIL_OBJECT = EFFECTS.register("frail", () -> new FrailEffect());
 	public static final RegistryObject<MobEffect> FLIGHT_OBJECT = EFFECTS.register("flight", () -> new FlightEffect());
+	public static final RegistryObject<MobEffect> TORMENT_OBJECT = EFFECTS.register("torment", () -> new TormentEffect());
 
 
 }
