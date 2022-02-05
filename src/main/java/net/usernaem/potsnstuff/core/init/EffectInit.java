@@ -24,6 +24,7 @@ import net.usernaem.potsnstuff.common.effects.RecallEffect;
 import net.usernaem.potsnstuff.common.effects.ReflectEffect;
 import net.usernaem.potsnstuff.common.effects.TormentEffect;
 import net.usernaem.potsnstuff.common.effects.UndeathEffect;
+import net.usernaem.potsnstuff.common.effects.ConversionEffect;
 
 public class EffectInit {
 	public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, PotsNStuff.MOD_ID_STRING);
@@ -47,6 +48,7 @@ public class EffectInit {
 	public static final RegistryObject<MobEffect> FRAIL_OBJECT = EFFECTS.register("frail", () -> new FrailEffect());
 	public static final RegistryObject<MobEffect> FLIGHT_OBJECT = EFFECTS.register("flight", () -> new FlightEffect());
 	public static final RegistryObject<MobEffect> TORMENT_OBJECT = EFFECTS.register("torment", () -> new TormentEffect());
+	public static final RegistryObject<MobEffect> CONVERT_OBJECT = EFFECTS.register("conversion", () -> new ConversionEffect());
 
 
 }

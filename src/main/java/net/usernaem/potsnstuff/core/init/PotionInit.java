@@ -69,6 +69,8 @@ public class PotionInit {
     public static final RegistryObject<Potion> TORMENT = POTIONS.register("torment", () -> new Potion(new MobEffectInstance(EffectInit.TORMENT_OBJECT.get(), 900, 0)));
     public static final RegistryObject<Potion> LONG_TORMENT = POTIONS.register("long_torment", () -> new Potion(new MobEffectInstance(EffectInit.TORMENT_OBJECT.get(), 1800, 0)));
     public static final RegistryObject<Potion> STRONG_TORMENT = POTIONS.register("strong_torment", () -> new Potion(new MobEffectInstance(EffectInit.TORMENT_OBJECT.get(), 600, 1)));
+    public static final RegistryObject<Potion> CONVERSION = POTIONS.register("conversion", () -> new Potion(new MobEffectInstance(EffectInit.CONVERT_OBJECT.get(), 600, 0)));
+    public static final RegistryObject<Potion> LONG_CONVERSION = POTIONS.register("long_conversion", () -> new Potion(new MobEffectInstance(EffectInit.CONVERT_OBJECT.get(), 900, 0)));
 
     
     
@@ -95,6 +97,7 @@ public class PotionInit {
         PotionRecipeSetup.addPotionRecipes(FLOATING.get(), Items.FEATHER, FLIGHT.get(), LONG_FLIGHT.get(), null);
         PotionRecipeSetup.addPotionRecipes(Potions.SLOW_FALLING, Items.FERMENTED_SPIDER_EYE, FLOATING.get(), LONG_FLOATING.get(), null);    
         PotionRecipeSetup.addPotionRecipes(Potions.AWKWARD, Items.SWEET_BERRIES, TORMENT.get(), LONG_TORMENT.get(), STRONG_TORMENT.get());   
+        PotionRecipeSetup.addPotionRecipes(FRAIL.get(), Items.FERMENTED_SPIDER_EYE, CONVERSION.get(), LONG_CONVERSION.get(), null);   
     }
 
    

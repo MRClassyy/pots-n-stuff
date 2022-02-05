@@ -3,9 +3,11 @@ package net.usernaem.potsnstuff.common.event;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.google.common.eventbus.Subscribe;
+
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.phys.Vec3;
@@ -13,7 +15,6 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -52,6 +53,14 @@ public class ServerEvents {
         	   event.setAmount((float) (event.getAmount() * 2.0));
            }
     }
+	
+	@SubscribeEvent(priority=EventPriority.LOWEST)
+	public static void ConvertDamageEvent(LivingHurtEvent event) {
+		if(event.getEntityLiving().hasEffect(EffectInit.CONVERT_OBJECT.get()) && !event.getSource().equals(DamageSource.OUT_OF_WORLD)) {
+			event.getEntityLiving().heal(event.getAmount());
+			event.setCanceled(true);
+		}
+	}
 	
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public static void onEntityJump(LivingJumpEvent event) {
