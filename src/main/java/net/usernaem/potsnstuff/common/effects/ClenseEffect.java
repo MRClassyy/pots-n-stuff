@@ -18,7 +18,7 @@ public class ClenseEffect extends InstantenousMobEffect{
 		 if (!entity.level.isClientSide) {
 			 if(entity.hasEffect(EffectInit.RECALL_OBJECT.get())) {
 				 RecallEffect eff = (RecallEffect)(entity.getEffect(EffectInit.RECALL_OBJECT.get()).getEffect());
-				 eff.terminateRecall();
+				 eff.applyInstantenousEffect(null, null, entity, p_76394_2_, 0);
 			 }
 			 entity.removeAllEffects(); 
 			 }

@@ -6,11 +6,12 @@ import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.util.LazyOptional;
+import net.usernaem.potsnstuff.core.data.MyPotStuffCapability;
+import net.usernaem.potsnstuff.core.data.MyPotStuffInterface;
 
 public class RecallEffect extends MobEffect{
 
-	private Vec3 posVector3d = null;
-	private String dimensionString = null;
 	public RecallEffect() {
 		super(MobEffectCategory.NEUTRAL, 9332621);
 	}
@@ -18,16 +19,24 @@ public class RecallEffect extends MobEffect{
 	
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap p_111185_2_, int p_111185_3_) {
-		posVector3d = entity.position();
-		dimensionString = entity.level.dimension().toString();
-
+		if(!entity.level.isClientSide) {
+			entity.getCapability(MyPotStuffCapability.INSTANCE).ifPresent(props ->{
+							props.setDimensionString(entity.level.dimension().toString());
+							props.setAnchorPos(entity.position());
+						});
+		}
 	}
 	
 	@Override
-	public void removeAttributeModifiers(LivingEntity entity, AttributeMap p_111187_2_,
-			int p_111187_3_) {
-		if(posVector3d != null && dimensionString != null && entity.level.dimension().toString().equalsIgnoreCase(dimensionString) && !entity.isPassenger())
-			entity.teleportTo(posVector3d.x, posVector3d.y, posVector3d.z);
+	public void removeAttributeModifiers(LivingEntity entity, AttributeMap p_111187_2_, int p_111187_3_) {
+		Vec3 oldPos;
+		String dimen;
+		LazyOptional<MyPotStuffInterface> Cap = entity.getCapability(MyPotStuffCapability.INSTANCE);
+		oldPos = Cap.map(MyPotStuffInterface::getAnchorPos).orElse(entity.position());
+		dimen = Cap.map(MyPotStuffInterface::getDimensionString).orElse("");
+		
+		if(!entity.level.isClientSide &&  oldPos != null && dimen != null && entity.level.dimension().toString().equalsIgnoreCase(dimen) && !entity.isPassenger())
+			entity.teleportTo(oldPos.x, oldPos.y, oldPos.z);
 	}
 	
 	//both added as a way to stop recall from triggering
@@ -37,11 +46,10 @@ public class RecallEffect extends MobEffect{
 	}
 	
 	@Override
-	public void applyInstantenousEffect(Entity p_180793_1_, Entity p_180793_2_, LivingEntity p_180793_3_,
+	public void applyInstantenousEffect(Entity p_180793_1_, Entity p_180793_2_, LivingEntity entity,
 			int p_180793_4_, double p_180793_5_) {
-		dimensionString = null;
-	}
-	public void terminateRecall() {
-		dimensionString = null;
+		entity.getCapability(MyPotStuffCapability.INSTANCE).ifPresent(p -> {
+			p.setDimensionString("");
+		});
 	}
 }

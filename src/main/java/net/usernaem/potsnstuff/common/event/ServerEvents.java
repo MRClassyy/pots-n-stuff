@@ -3,11 +3,15 @@ package net.usernaem.potsnstuff.common.event;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.google.common.eventbus.Subscribe;
+
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -19,6 +23,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.usernaem.potsnstuff.PotsNStuff;
 import net.usernaem.potsnstuff.common.effects.BombEffect;
+import net.usernaem.potsnstuff.core.data.MyPotStuffProvider;
 import net.usernaem.potsnstuff.core.init.EffectInit;
 
 @EventBusSubscriber(modid = PotsNStuff.MOD_ID_STRING, bus = Bus.FORGE)
@@ -48,6 +53,14 @@ public class ServerEvents {
         	   event.setAmount((float) (event.getAmount() * 2.0));
            }
     }
+	
+	@SubscribeEvent(priority=EventPriority.LOWEST)
+	public static void ConvertDamageEvent(LivingHurtEvent event) {
+		if(event.getEntityLiving().hasEffect(EffectInit.CONVERT_OBJECT.get()) && !event.getSource().equals(DamageSource.OUT_OF_WORLD)) {
+			event.getEntityLiving().heal(event.getAmount());
+			event.setCanceled(true);
+		}
+	}
 	
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public static void onEntityJump(LivingJumpEvent event) {
@@ -91,6 +104,15 @@ public class ServerEvents {
 			entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 1));
 			entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 100, 0));
 			event.setCanceled(true);
+		}
+	}
+	
+	@SubscribeEvent
+	public static void AttachCapabilities(final AttachCapabilitiesEvent<Entity> event) {
+		if(event.getObject() instanceof LivingEntity) {
+			MyPotStuffProvider provider = new MyPotStuffProvider();
+			event.addCapability(MyPotStuffProvider.Identifier, provider);
+			//event.addListener(provider::invalidate);
 		}
 	}
 	
