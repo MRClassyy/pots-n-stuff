@@ -3,7 +3,6 @@ package net.usernaem.potsnstuff.common.event;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.google.common.eventbus.Subscribe;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -112,7 +111,6 @@ public class ServerEvents {
 		if(event.getObject() instanceof LivingEntity) {
 			MyPotStuffProvider provider = new MyPotStuffProvider();
 			event.addCapability(MyPotStuffProvider.Identifier, provider);
-			//event.addListener(provider::invalidate);
 		}
 	}
 	
