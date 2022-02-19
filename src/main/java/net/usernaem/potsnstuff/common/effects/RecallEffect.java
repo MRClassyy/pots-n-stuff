@@ -11,6 +11,7 @@ import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.phys.Vec3;
@@ -52,8 +53,10 @@ public class RecallEffect extends MobEffect{
 			}
 			entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.NEUTRAL, 1.0F, 1.0f);
 		}else {
-			if(entity instanceof Player)
-				((ServerPlayer)entity).displayClientMessage(new TextComponent("Couldn't recall from this dimension"), true);
+			if(entity instanceof Player) {
+				((ServerPlayer)entity).displayClientMessage(new TextComponent("Can't recall to a different dimension"), true);
+				entity.hurt(DamageSource.MAGIC, 1.0f);
+			}
 		}
 	}
 	
