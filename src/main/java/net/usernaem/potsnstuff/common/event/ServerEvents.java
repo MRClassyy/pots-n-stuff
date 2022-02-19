@@ -3,9 +3,10 @@ package net.usernaem.potsnstuff.common.event;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -52,6 +53,14 @@ public class ServerEvents {
         	   event.setAmount((float) (event.getAmount() * 2.0));
            }
     }
+
+	@SubscribeEvent
+    public static void onFallDamage(LivingHurtEvent event) {
+           if(event.getEntityLiving().hasEffect(EffectInit.LIGHTFOOT_OBJECT.get())) {
+        	   if(event.getSource() == DamageSource.FALL)
+        		   event.setCanceled(true);
+           }
+    }
 	
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public static void ConvertDamageEvent(LivingHurtEvent event) {
@@ -86,25 +95,25 @@ public class ServerEvents {
 	public static void onEntityDeath(LivingDeathEvent event) {
 		if(event.getEntityLiving().hasEffect(EffectInit.UNDEATH_OBJECT.get())) {
 			LivingEntity entity = event.getEntityLiving();
-			boolean boosted = false;
-			if(entity.getEffect(EffectInit.UNDEATH_OBJECT.get()).getAmplifier() != 0)
-				boosted = true;
-			entity.setHealth(4);
-			//hopefully this isnt too much stuff happening in an event
+			int boosted = 1;
+			boosted = entity.getEffect(EffectInit.UNDEATH_OBJECT.get()).getAmplifier() + 1;
+			entity.setHealth(2 * boosted);
 			  ArrayList<MobEffectInstance> tmpArrayList = new ArrayList<>(entity.getActiveEffects());
 	    	  Iterator<MobEffectInstance> iterator = tmpArrayList.iterator();
 			 while (iterator.hasNext()) {
-	             MobEffectInstance e = iterator.next();
-				 if (!boosted || !(e.getEffect() == EffectInit.UNDEATH_OBJECT.get())) {
-					 	 entity.removeEffect(e.getEffect());
-					 	 iterator.remove();
-		          }
+	            MobEffectInstance e = iterator.next();
+				entity.removeEffect(e.getEffect());
+				iterator.remove();
 			 }
-			entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 1));
-			entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 100, 0));
+			entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, boosted - 1));
+			entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 600, 0));
+			entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
+			entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.TOTEM_USE, SoundSource.NEUTRAL, 1.0F, 1.0f);
 			event.setCanceled(true);
 		}
 	}
+	
+
 	
 	@SubscribeEvent
 	public static void AttachCapabilities(final AttachCapabilitiesEvent<Entity> event) {

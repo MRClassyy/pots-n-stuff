@@ -10,6 +10,7 @@ public class MyPotStuffImplementation implements MyPotStuffInterface{
 	private static final String NBT_ANCHOR_Y_KEY = "anchorY";
 	private static final String NBT_ANCHOR_Z_KEY = "anchorZ";
 	private static final String NBT_OLD_X_KEY = "oldX";
+	private static final String NBT_OLD_Y_KEY = "oldY";
 	private static final String NBT_OLD_Z_KEY = "oldZ";
 
 	
@@ -17,15 +18,17 @@ public class MyPotStuffImplementation implements MyPotStuffInterface{
 	private double AnchorPosY;
 	private double AnchorPosZ;
 	private double oldPosX;
+	private double oldPosY;
 	private double oldPosZ;
 	private String dimenString = "";
 	
 	
 	public boolean compareOldPos(Vec3 Pos) {
 		double X = this.oldPosX - Pos.x;
+		double Y = this.oldPosY - Pos.y;
 		double Z = this.oldPosZ - Pos.z;
 		
-		return (X == 0 && Z == 0)? true : false;
+		return (X == 0 && Z == 0 && Y >= 0)? true : false;
 	}
 
 	
@@ -49,6 +52,7 @@ public class MyPotStuffImplementation implements MyPotStuffInterface{
 	
 	public void setOldPos(Vec3 Pos) {
 		oldPosX = Pos.x;
+		oldPosY = Pos.y;
 		oldPosZ = Pos.z;
 	}
 	
@@ -70,6 +74,7 @@ public class MyPotStuffImplementation implements MyPotStuffInterface{
 		tag.putDouble(NBT_ANCHOR_Z_KEY, this.AnchorPosZ);
 		
 		tag.putDouble(NBT_OLD_X_KEY, this.oldPosX);
+		tag.putDouble(NBT_OLD_Y_KEY, this.oldPosY);
 		tag.putDouble(NBT_OLD_Z_KEY, this.oldPosZ);
 
 		return tag;
@@ -82,6 +87,7 @@ public class MyPotStuffImplementation implements MyPotStuffInterface{
 		this.AnchorPosY = nbt.getDouble(NBT_ANCHOR_Y_KEY);
 		this.AnchorPosZ = nbt.getDouble(NBT_ANCHOR_Z_KEY);
 		this.oldPosX = nbt.getDouble(NBT_OLD_X_KEY);
+		this.oldPosY = nbt.getDouble(NBT_OLD_Y_KEY);
 		this.oldPosZ = nbt.getDouble(NBT_OLD_Z_KEY);
 		
 	}

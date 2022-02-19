@@ -3,6 +3,12 @@ package net.usernaem.potsnstuff.common.effects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
+import net.minecraft.world.entity.player.Player;
+
+
+
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;
@@ -38,8 +44,16 @@ public class RecallEffect extends MobEffect{
 		dimen = Cap.map(MyPotStuffInterface::getDimensionString).orElse("");
 		
 		if(!entity.level.isClientSide &&  oldPos != null && dimen != null && entity.level.dimension().toString().equalsIgnoreCase(dimen) && !entity.isPassenger()){
-			entity.teleportTo(oldPos.x, oldPos.y, oldPos.z);
+			if(entity instanceof Player) {
+				((ServerPlayer)entity).stopRiding();
+				((ServerPlayer)entity).teleportTo(oldPos.x, oldPos.y, oldPos.z);
+			}else {
+				entity.teleportTo(oldPos.x, oldPos.y, oldPos.z);
+			}
 			entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.NEUTRAL, 1.0F, 1.0f);
+		}else {
+			if(entity instanceof Player)
+				((ServerPlayer)entity).displayClientMessage(new TextComponent("Couldn't recall from this dimension"), true);
 		}
 	}
 	

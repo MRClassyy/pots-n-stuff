@@ -10,6 +10,7 @@ import net.usernaem.potsnstuff.common.effects.BlastProtectionEffect;
 import net.usernaem.potsnstuff.common.effects.BombEffect;
 import net.usernaem.potsnstuff.common.effects.ClenseEffect;
 import net.usernaem.potsnstuff.common.effects.CureEffect;
+import net.usernaem.potsnstuff.common.effects.DisorientEffect;
 import net.usernaem.potsnstuff.common.effects.FlightEffect;
 import net.usernaem.potsnstuff.common.effects.FrailEffect;
 import net.usernaem.potsnstuff.common.effects.FuzeEffect;
@@ -17,13 +18,15 @@ import net.usernaem.potsnstuff.common.effects.GroundingEffect;
 import net.usernaem.potsnstuff.common.effects.HellsTouchEffect;
 import net.usernaem.potsnstuff.common.effects.InfernoEffect;
 import net.usernaem.potsnstuff.common.effects.LaunchingEffect;
+import net.usernaem.potsnstuff.common.effects.LightFootEffect;
 import net.usernaem.potsnstuff.common.effects.LightningEffect;
 import net.usernaem.potsnstuff.common.effects.NullifyEffect;
 import net.usernaem.potsnstuff.common.effects.PhotosynthesisEffect;
 import net.usernaem.potsnstuff.common.effects.RecallEffect;
 import net.usernaem.potsnstuff.common.effects.ReflectEffect;
-import net.usernaem.potsnstuff.common.effects.TormentEffect;
+import net.usernaem.potsnstuff.common.effects.StingingEffect;
 import net.usernaem.potsnstuff.common.effects.UndeathEffect;
+import net.usernaem.potsnstuff.common.effects.WakeUpEffect;
 import net.usernaem.potsnstuff.common.effects.ConversionEffect;
 
 public class EffectInit {
@@ -47,8 +50,12 @@ public class EffectInit {
 	public static final RegistryObject<MobEffect> LIGHTNING_OBJECT = EFFECTS.register("lightning", () -> new LightningEffect());
 	public static final RegistryObject<MobEffect> FRAIL_OBJECT = EFFECTS.register("frail", () -> new FrailEffect());
 	public static final RegistryObject<MobEffect> FLIGHT_OBJECT = EFFECTS.register("flight", () -> new FlightEffect());
-	public static final RegistryObject<MobEffect> TORMENT_OBJECT = EFFECTS.register("torment", () -> new TormentEffect());
+	public static final RegistryObject<MobEffect> STING_OBJECT = EFFECTS.register("sting", () -> new StingingEffect());
 	public static final RegistryObject<MobEffect> CONVERT_OBJECT = EFFECTS.register("conversion", () -> new ConversionEffect());
+	public static final RegistryObject<MobEffect> WAKEUP_OBJECT = EFFECTS.register("wakeup", () -> new WakeUpEffect());
+	public static final RegistryObject<MobEffect> LIGHTFOOT_OBJECT = EFFECTS.register("lightfoot", () -> new LightFootEffect());
+	public static final RegistryObject<MobEffect> RANDOM_OBJECT = EFFECTS.register("disorient", () -> new DisorientEffect());
+
 
 
 }

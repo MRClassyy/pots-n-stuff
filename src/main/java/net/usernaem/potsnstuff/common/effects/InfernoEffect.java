@@ -13,7 +13,7 @@ public class InfernoEffect extends MobEffect{
 	
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplify) {
-		if(amplify != 0) {
+		if(amplify > 0) {
 			entity.removeEffect(MobEffects.FIRE_RESISTANCE);
 		}
 		if(!entity.isOnFire() && !entity.isInWaterRainOrBubble()) {
