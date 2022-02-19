@@ -15,22 +15,6 @@ public class NullifyEffect extends InstantenousMobEffect{
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity entity, int p_76394_2_) {
-		 if (!entity.level.isClientSide) {
-			  ArrayList<MobEffectInstance> tmpArrayList = new ArrayList<>(entity.getActiveEffects());
-	    	  Iterator<MobEffectInstance> iterator = tmpArrayList.iterator();
-			 while (iterator.hasNext()) {
-	             MobEffectInstance e = iterator.next();
-				 if (e.getEffect().getCategory() == MobEffectCategory.BENEFICIAL) {
-					 	 entity.removeEffect(e.getEffect());
-					 	 iterator.remove();
-		          }
-			 }
-		 }
-		
-	}
-	
-	@Override
 	public void applyInstantenousEffect(Entity p_180793_1_, Entity p_180793_2_, LivingEntity entity,
 			int p_180793_4_, double p_180793_5_) {
 		 if (!entity.level.isClientSide) {

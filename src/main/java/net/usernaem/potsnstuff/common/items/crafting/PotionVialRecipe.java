@@ -68,7 +68,7 @@ public class PotionVialRecipe extends CustomRecipe{
    public boolean canCraftInDimensions(int p_194133_1_, int p_194133_2_) {
       return p_194133_1_ >= 2 && p_194133_2_ >= 2;
    }
-	   public RecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<?> getSerializer() {
       return RecepiesInit.POTION_VIAL_OBJECT.get();
    }
 	   
