@@ -77,6 +77,11 @@ public class PotionInit {
     public static final RegistryObject<Potion> DISORIENT = POTIONS.register("disorient", () -> new Potion(new MobEffectInstance(EffectInit.RANDOM_OBJECT.get(), 600, 0)));
     public static final RegistryObject<Potion> LONG_DISORIENT = POTIONS.register("long_disorient", () -> new Potion(new MobEffectInstance(EffectInit.RANDOM_OBJECT.get(), 900, 0)));
     public static final RegistryObject<Potion> STRONG_DISORIENT = POTIONS.register("strong_disorient", () -> new Potion(new MobEffectInstance(EffectInit.RANDOM_OBJECT.get(), 600, 1)));
+    public static final RegistryObject<Potion> WITHERING = POTIONS.register("withering", () -> new Potion(new MobEffectInstance(MobEffects.WITHER, 400, 0)));
+    public static final RegistryObject<Potion> LONG_WITHERING = POTIONS.register("long_withering", () -> new Potion(new MobEffectInstance(MobEffects.WITHER, 800, 0)));
+    public static final RegistryObject<Potion> STRONG_WITHERING = POTIONS.register("strong_withering", () -> new Potion(new MobEffectInstance(MobEffects.WITHER, 400, 1)));
+    public static final RegistryObject<Potion> BLIND = POTIONS.register("blind", () -> new Potion(new MobEffectInstance(MobEffects.BLINDNESS, 400, 0)));
+    public static final RegistryObject<Potion> LONG_BLIND = POTIONS.register("long_blind", () -> new Potion(new MobEffectInstance(MobEffects.BLINDNESS, 800, 0)));
 
     
     
@@ -106,7 +111,9 @@ public class PotionInit {
         PotionRecipeSetup.addPotionRecipes(FRAIL.get(), Items.FERMENTED_SPIDER_EYE, CONVERSION.get(), LONG_CONVERSION.get(), null);   
         PotionRecipeSetup.addPotionRecipes(Potions.AWKWARD, Items.WHITE_WOOL, WAKEUP.get(), null, null);   
         PotionRecipeSetup.addPotionRecipes(Potions.AWKWARD, Items.SALMON, LIGHTFOOT.get(), LONG_LIGHTFOOT.get(), null);  
-        PotionRecipeSetup.addPotionRecipes(Potions.AWKWARD, Items.POISONOUS_POTATO, DISORIENT.get(), LONG_DISORIENT.get(), STRONG_DISORIENT.get());  
+        PotionRecipeSetup.addPotionRecipes(Potions.AWKWARD, Items.POISONOUS_POTATO, DISORIENT.get(), LONG_DISORIENT.get(), STRONG_DISORIENT.get());   
+        PotionRecipeSetup.addPotionRecipes(Potions.AWKWARD, Items.WITHER_ROSE, WITHERING.get(), LONG_WITHERING.get(), STRONG_WITHERING.get());  
+        PotionRecipeSetup.addPotionRecipes(Potions.THICK, Items.INK_SAC, BLIND.get(), LONG_BLIND.get(), null);  
     }
 
    
