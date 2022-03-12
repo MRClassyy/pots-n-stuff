@@ -9,7 +9,7 @@ import net.minecraft.world.level.Explosion;
 
 public class BombEffect extends InstantenousMobEffect{
 
-	public static final DamageSource BombDamageSource = new DamageSource("BombDamage");
+	public static final DamageSource BombDamageSource = new DamageSource("BombDamage").bypassArmor().setMagic().setExplosion();
 	public BombEffect() {
 		super(MobEffectCategory.HARMFUL, 7033103);
 	}
@@ -18,7 +18,7 @@ public class BombEffect extends InstantenousMobEffect{
 	@Override
 	public void applyInstantenousEffect(Entity p_180793_1_, Entity p_180793_2_, LivingEntity entity,
 			int amplifyer, double p_180793_5_) {
-		entity.level.explode(null, BombEffect.BombDamageSource, null, entity.getX(), entity.getY()+1.5, entity.getZ(), 1 + amplifyer, false, Explosion.BlockInteraction.NONE);
+		entity.level.explode(null, BombEffect.BombDamageSource, null, entity.getX(), entity.getY()+1.5, entity.getZ(), 1 + amplifyer * 0.3f, false, Explosion.BlockInteraction.NONE);
 	}
 
 }

@@ -53,7 +53,7 @@ public class RecallEffect extends MobEffect{
 			}
 			entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.NEUTRAL, 1.0F, 1.0f);
 		}else {
-			if(entity instanceof Player) {
+			if(entity instanceof Player && dimen != null && !dimen.equals("")) {
 				((ServerPlayer)entity).displayClientMessage(new TextComponent("Can't recall to a different dimension"), true);
 				entity.hurt(DamageSource.MAGIC, 1.0f);
 			}

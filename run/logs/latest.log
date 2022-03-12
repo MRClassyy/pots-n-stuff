@@ -1,18 +1,10 @@
-[00:11:50] [Server thread/INFO]: Saving and pausing game...
-[00:11:50] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[00:11:50] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[00:11:50] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[00:11:51] [Server thread/INFO]: Dev lost connection: Disconnected
-[00:11:51] [Server thread/INFO]: Dev left the game
-[00:11:51] [Server thread/INFO]: Stopping singleplayer server as player logged out
-[00:11:51] [Server thread/INFO]: Stopping server
-[00:11:51] [Server thread/INFO]: Saving players
-[00:11:51] [Server thread/INFO]: Saving worlds
-[00:11:51] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[00:11:51] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[00:11:51] [Server thread/INFO]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[00:11:51] [Server thread/INFO]: ThreadedAnvilChunkStorage (New World): All chunks are saved
-[00:11:51] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[00:11:51] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[00:11:51] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[00:11:53] [Render thread/INFO]: Stopping!
+[12Mar2022 05:02:22.957] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 1.18, --assetsDir, C:\Users\Vuki9\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 39.0.66, --fml.mcVersion, 1.18.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20211210.034407, --mod, examplemod, --all, --output, D:\internetDownload\ydw\tmpp\jwjwl\pots_n_stuff\src\generated\resources, --existing, D:\internetDownload\ydw\tmpp\jwjwl\pots_n_stuff\src\main\resources]
+[12Mar2022 05:02:22.967] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 9.1.0+9.1.0+main.6690ee51 starting: java version 17.0.2 by Eclipse Adoptium
+[12Mar2022 05:02:23.287] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Vuki9/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%2327!/ Service=ModLauncher Env=CLIENT
+[12Mar2022 05:02:29.332] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Vuki9\.gradle\caches\forge_gradle\assets, --assetIndex, 1.18, --mod, examplemod, --all, --output, D:\internetDownload\ydw\tmpp\jwjwl\pots_n_stuff\src\generated\resources, --existing, D:\internetDownload\ydw\tmpp\jwjwl\pots_n_stuff\src\main\resources]
+[05:02:30] [main/INFO]: Initializing Data Gatherer for mods [examplemod]
+[05:02:39] [modloading-worker-0/INFO]: Forge mod loading, version 39.0.66, for MC 1.18.1 with MCP 20211210.034407
+[05:02:39] [modloading-worker-0/INFO]: MinecraftForge v39.0.66 Initialized
+[05:02:40] [modloading-worker-0/ERROR]: Null comment for config option server, this is invalid and may be disallowed in the future.
+[05:02:40] [main/WARN]: Assets URL 'union:/C:/Users/Vuki9/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.18.1-39.0.66_mapped_official_1.18.1/forge-1.18.1-39.0.66_mapped_official_1.18.1-recomp.jar%2377!/assets/.mcassetsroot' uses unexpected schema
+[05:02:40] [main/WARN]: Assets URL 'union:/C:/Users/Vuki9/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.18.1-39.0.66_mapped_official_1.18.1/forge-1.18.1-39.0.66_mapped_official_1.18.1-recomp.jar%2377!/data/.mcassetsroot' uses unexpected schema

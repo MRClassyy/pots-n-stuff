@@ -14,6 +14,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
@@ -23,6 +24,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.usernaem.potsnstuff.PotsNStuff;
 import net.usernaem.potsnstuff.common.effects.BombEffect;
+import net.usernaem.potsnstuff.common.effects.ConversionEffect;
 import net.usernaem.potsnstuff.core.data.MyPotStuffProvider;
 import net.usernaem.potsnstuff.core.init.EffectInit;
 
@@ -64,8 +66,16 @@ public class ServerEvents {
 	
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public static void ConvertDamageEvent(LivingHurtEvent event) {
-		if(event.getEntityLiving().hasEffect(EffectInit.CONVERT_OBJECT.get()) && !event.getSource().equals(DamageSource.OUT_OF_WORLD)) {
-			event.getEntityLiving().heal(event.getAmount());
+		if(event.getEntityLiving().hasEffect(EffectInit.CONVERT_OBJECT.get()) && !event.getSource().equals(DamageSource.OUT_OF_WORLD) && !event.getSource().equals(ConversionEffect.ConversionDamageSource)) {
+			event.getEntityLiving().setHealth(event.getEntityLiving().getHealth() + event.getAmount());
+			event.setCanceled(true);
+		}
+	}
+	
+	@SubscribeEvent(priority=EventPriority.LOWEST)
+	public static void ConvertHealEvent(LivingHealEvent event) {
+		if(event.getEntityLiving().hasEffect(EffectInit.CONVERT_OBJECT.get())){
+			event.getEntity().hurt(ConversionEffect.ConversionDamageSource, event.getAmount());
 			event.setCanceled(true);
 		}
 	}
@@ -95,19 +105,24 @@ public class ServerEvents {
 	public static void onEntityDeath(LivingDeathEvent event) {
 		if(event.getEntityLiving().hasEffect(EffectInit.UNDEATH_OBJECT.get())) {
 			LivingEntity entity = event.getEntityLiving();
+			if(entity.hasEffect(EffectInit.DBOUND_OBJECT.get())) {
+				event.setCanceled(false);
+				return;
+			}
 			int boosted = 1;
 			boosted = entity.getEffect(EffectInit.UNDEATH_OBJECT.get()).getAmplifier() + 1;
 			entity.setHealth(2 * boosted);
-			  ArrayList<MobEffectInstance> tmpArrayList = new ArrayList<>(entity.getActiveEffects());
-	    	  Iterator<MobEffectInstance> iterator = tmpArrayList.iterator();
-			 while (iterator.hasNext()) {
+			ArrayList<MobEffectInstance> tmpArrayList = new ArrayList<>(entity.getActiveEffects());
+	    	Iterator<MobEffectInstance> iterator = tmpArrayList.iterator();
+			while (iterator.hasNext()) {
 	            MobEffectInstance e = iterator.next();
 				entity.removeEffect(e.getEffect());
 				iterator.remove();
-			 }
+			}
 			entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, boosted - 1));
 			entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 600, 0));
-			entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0));
+			entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0));
+			entity.addEffect(new MobEffectInstance(EffectInit.DBOUND_OBJECT.get(),300 * boosted,0));
 			entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.TOTEM_USE, SoundSource.NEUTRAL, 1.0F, 1.0f);
 			event.setCanceled(true);
 		}

@@ -15,6 +15,8 @@
 	
 	"effect.potsnstuff.bomb": "bomb",
 	"death.attack.BombDamage": "%s exploaded",
+	"death.attack.Conversion": "%s healed to death",
+	"death.attack.Conversion.player": "%s healed to death",
 	
 	"effect.potsnstuff.grounded": "grounded",
 	"item.minecraft.potion.effect.grounding": "Potion of Grounding",
@@ -316,6 +318,16 @@
 	"item.minecraft.tipped_arrow.effect.disorient": "Arrow of Disorienting",
 	"item.minecraft.tipped_arrow.effect.long_disorient": "Arrow of Disorienting",
 	"item.minecraft.tipped_arrow.effect.strong_disorient": "Splash Potion of Disorienting",
+	
+	"effect.potsnstuff.deathbound": "Deathbound",
+	"item.minecraft.potion.effect.deathbound": "Potion of Deathbound",
+	"item.minecraft.potion.effect.long_deathbound": "Potion of Deathbound",
+	"item.minecraft.splash_potion.effect.deathbound": "Splash Potion of Deathbound",
+	"item.minecraft.splash_potion.effect.long_deathbound": "Splash Potion of Deathbound",
+	"item.minecraft.lingering_potion.effect.deathbound": "Lingering Potion of Deathbound",
+	"item.minecraft.lingering_potion.effect.long_deathbound": "Lingering Potion of Deathbound",
+	"item.minecraft.tipped_arrow.effect.deathbound": "Arrow of Deathbound",
+	"item.minecraft.tipped_arrow.effect.long_deathbound": "Arrow of Deathbound",
 	
 	"item.potsnstuff.potion_bag": "Potion Bag",
 	"item.potsnstuff.vial_empty": "Empty Vial",

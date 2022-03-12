@@ -13,7 +13,7 @@ public class FuzeEffect extends MobEffect{
 	
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplitude) {
-		entity.level.explode(null, BombEffect.BombDamageSource, null, entity.getX(), entity.getY()+1.5, entity.getZ(), 1 + amplitude, false, Explosion.BlockInteraction.NONE);
+		entity.level.explode(null, BombEffect.BombDamageSource, null, entity.getX(), entity.getY()+1.5, entity.getZ(), 1 + amplitude * 0.5f, false, Explosion.BlockInteraction.NONE);
 
 	}
 	

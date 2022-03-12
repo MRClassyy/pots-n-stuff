@@ -10,6 +10,7 @@ import net.usernaem.potsnstuff.common.effects.BlastProtectionEffect;
 import net.usernaem.potsnstuff.common.effects.BombEffect;
 import net.usernaem.potsnstuff.common.effects.ClenseEffect;
 import net.usernaem.potsnstuff.common.effects.CureEffect;
+import net.usernaem.potsnstuff.common.effects.DeathboundEffect;
 import net.usernaem.potsnstuff.common.effects.DisorientEffect;
 import net.usernaem.potsnstuff.common.effects.FlightEffect;
 import net.usernaem.potsnstuff.common.effects.FrailEffect;
@@ -55,6 +56,7 @@ public class EffectInit {
 	public static final RegistryObject<MobEffect> WAKEUP_OBJECT = EFFECTS.register("wakeup", () -> new WakeUpEffect());
 	public static final RegistryObject<MobEffect> LIGHTFOOT_OBJECT = EFFECTS.register("lightfoot", () -> new LightFootEffect());
 	public static final RegistryObject<MobEffect> RANDOM_OBJECT = EFFECTS.register("disorient", () -> new DisorientEffect());
+	public static final RegistryObject<MobEffect> DBOUND_OBJECT = EFFECTS.register("deathbound", () -> new DeathboundEffect());
 
 
 
