@@ -14,6 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 import net.usernaem.potsnstuff.PotsNStuff;
+import net.usernaem.potsnstuff.core.config.CraftConfig;
 import net.usernaem.potsnstuff.core.init.ItemInit;
 import net.usernaem.potsnstuff.core.init.RecepiesInit;
 
@@ -55,7 +56,7 @@ public class PotionVialRecipe extends CustomRecipe{
 	
 	public ItemStack assemble(CraftingContainer inventory) {
 		ItemStack itemStack = inventory.getItem(1 + inventory.getWidth());
-		if(itemStack.getItem() != Items.POTION) {
+		if(itemStack.getItem() != Items.POTION || !CraftConfig.CRAFT_VIAL.get()) {
 			return ItemStack.EMPTY;
 		}else {
 			ItemStack itemstack1 = new ItemStack(ItemInit.POTVIAL_OBJECT.get(), 4);

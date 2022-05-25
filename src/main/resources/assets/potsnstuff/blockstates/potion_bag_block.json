@@ -1,0 +1,13 @@
+{
+	"variants":{
+		"facing=north,floor_wall=floor": { "model": "potsnstuff:block/potion_bag_block"},
+		"facing=south,floor_wall=floor": { "model": "potsnstuff:block/potion_bag_block", "y": 180},
+		"facing=west,floor_wall=floor": { "model": "potsnstuff:block/potion_bag_block", "y": 270},
+		"facing=east,floor_wall=floor": { "model": "potsnstuff:block/potion_bag_block", "y": 90},
+		
+		"facing=north,floor_wall=wall": { "model": "potsnstuff:block/potion_bag_side_block"},
+		"facing=south,floor_wall=wall": { "model": "potsnstuff:block/potion_bag_side_block", "y": 180},
+		"facing=west,floor_wall=wall": { "model": "potsnstuff:block/potion_bag_side_block", "y": 270},
+		"facing=east,floor_wall=wall": { "model": "potsnstuff:block/potion_bag_side_block", "y": 90}
+	}
+}

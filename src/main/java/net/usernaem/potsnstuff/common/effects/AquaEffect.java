@@ -13,6 +13,13 @@ public class AquaEffect extends InstantenousMobEffect{
 	}
 		
 	@Override
+	public void applyEffectTick(LivingEntity entity, int p_19468_) {
+		if(!entity.level.dimensionType().ultraWarm() && !entity.getFeetBlockState().getMaterial().isSolid()) {			
+			entity.level.setBlockAndUpdate(entity.blockPosition(), Blocks.WATER.defaultBlockState());
+		}
+	}
+	
+	@Override
 	public void applyInstantenousEffect(Entity p_180793_1_, Entity p_180793_2_, LivingEntity entity,
 			int p_180793_4_, double p_180793_5_) {
 		if(!entity.level.dimensionType().ultraWarm() && !entity.getFeetBlockState().getMaterial().isSolid()) {			

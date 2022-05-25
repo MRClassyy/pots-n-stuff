@@ -84,7 +84,7 @@ public class PotionInit {
     public static final RegistryObject<Potion> LONG_BLIND = POTIONS.register("long_blind", () -> new Potion(new MobEffectInstance(MobEffects.BLINDNESS, 800, 0)));
     public static final RegistryObject<Potion> DEATHBOUND = POTIONS.register("deathbound", () -> new Potion(new MobEffectInstance(EffectInit.DBOUND_OBJECT.get(), 300, 0)));
     public static final RegistryObject<Potion> LONG_DEATHBOUND = POTIONS.register("long_deathbound", () -> new Potion(new MobEffectInstance(EffectInit.DBOUND_OBJECT.get(), 600, 0)));
-
+    public static final RegistryObject<Potion> DISARM = POTIONS.register("disarm", () -> new Potion(new MobEffectInstance(EffectInit.DISARM_OBJECT.get(), 1, 0)));
     
     
     public static void addPotionRecipes(){
@@ -117,6 +117,7 @@ public class PotionInit {
         PotionRecipeSetup.addPotionRecipes(Potions.AWKWARD, Items.WITHER_ROSE, WITHERING.get(), LONG_WITHERING.get(), STRONG_WITHERING.get());  
         PotionRecipeSetup.addPotionRecipes(Potions.THICK, Items.INK_SAC, BLIND.get(), LONG_BLIND.get(), null);  
         PotionRecipeSetup.addPotionRecipes(DEATHBOUND.get(), Items.FERMENTED_SPIDER_EYE, DEATHBOUND.get(), LONG_DEATHBOUND.get(), null);  
+        PotionRecipeSetup.addPotionRecipes(Potions.THICK, Items.SLIME_BALL, DISARM.get(), null, null); 
     }
 
    

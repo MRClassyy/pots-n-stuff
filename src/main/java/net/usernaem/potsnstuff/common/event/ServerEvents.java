@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -25,6 +26,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.usernaem.potsnstuff.PotsNStuff;
 import net.usernaem.potsnstuff.common.effects.BombEffect;
 import net.usernaem.potsnstuff.common.effects.ConversionEffect;
+import net.usernaem.potsnstuff.core.config.EffectConfig;
 import net.usernaem.potsnstuff.core.data.MyPotStuffProvider;
 import net.usernaem.potsnstuff.core.init.EffectInit;
 
@@ -33,36 +35,52 @@ public class ServerEvents {
 
 	
 	@SubscribeEvent
-    public static void onEntityDamage(LivingAttackEvent event) {
-        if (event.getSource().isProjectile()) {
-           if(event.getEntityLiving().hasEffect(EffectInit.REFLECT_OBJECT.get())) {
-        	   event.setCanceled(true);
+    public static void onBeforeDamage(LivingAttackEvent event) {
+		if (event.getSource().isProjectile()) {
+			if(event.getEntityLiving().hasEffect(EffectInit.REFLECT_OBJECT.get())) {
+	           int percent = EffectConfig.ARROW_RESIST.get();
+	           if(percent == 100)
+	        	   event.setCanceled(true);
+	        }
+	    }else if (event.getSource().isExplosion() || event.getSource().equals(BombEffect.BombDamageSource)) {
+           if(event.getEntityLiving().hasEffect(EffectInit.BLAST_OBJECT.get())) {
+        	   int percent = EffectConfig.BLAST_RESIST.get();
+        	   if(percent == 100)
+        		   event.setCanceled(true);
            }
         }
     }
+
 	@SubscribeEvent
-    public static void onExplosionDamage(LivingAttackEvent event) {
-        if (event.getSource().isExplosion() || event.getSource().equals(BombEffect.BombDamageSource)) {
-           if(event.getEntityLiving().hasEffect(EffectInit.BLAST_OBJECT.get())) {
-        	   event.setCanceled(true);
+    public static void onTakenDamage(LivingHurtEvent event) {
+        if(event.getEntityLiving().hasEffect(EffectInit.FRAIL_OBJECT.get())) {
+     	   event.setAmount((float) (event.getAmount() * EffectConfig.FRAIL_MULTIPLY.get()));
+        }
+		DamageSource dmgSource = event.getSource();
+        if(dmgSource == DamageSource.FALL) {
+        	if(event.getEntityLiving().hasEffect(EffectInit.LIGHTFOOT_OBJECT.get())) {
+        		calculateDamage(EffectConfig.FALL_RESIST.get(), event);
+        	}
+        }
+        else if(dmgSource.isExplosion() || dmgSource.equals(BombEffect.BombDamageSource)) {
+           if(event.getEntityLiving().hasEffect(EffectInit.BLAST_OBJECT.get()))
+        	   calculateDamage(EffectConfig.BLAST_RESIST.get(), event);
+        }
+        else if(dmgSource.isProjectile()) {
+           if(event.getEntityLiving().hasEffect(EffectInit.REFLECT_OBJECT.get())) {
+        	   calculateDamage(EffectConfig.ARROW_RESIST.get(), event);
            }
         }
     }
 	
-	@SubscribeEvent
-    public static void onModifiedDamage(LivingHurtEvent event) {
-           if(event.getEntityLiving().hasEffect(EffectInit.FRAIL_OBJECT.get())) {
-        	   event.setAmount((float) (event.getAmount() * 2.0));
-           }
-    }
-
-	@SubscribeEvent
-    public static void onFallDamage(LivingHurtEvent event) {
-           if(event.getEntityLiving().hasEffect(EffectInit.LIGHTFOOT_OBJECT.get())) {
-        	   if(event.getSource() == DamageSource.FALL)
-        		   event.setCanceled(true);
-           }
-    }
+	private static void calculateDamage(int percent, LivingHurtEvent event) {
+		if(percent == 100) {
+			event.setCanceled(true);
+		}else{
+			percent = 100 - percent;
+			event.setAmount(event.getAmount()/100 * percent);
+		}
+	}
 	
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public static void ConvertDamageEvent(LivingHurtEvent event) {
@@ -75,6 +93,11 @@ public class ServerEvents {
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public static void ConvertHealEvent(LivingHealEvent event) {
 		if(event.getEntityLiving().hasEffect(EffectInit.CONVERT_OBJECT.get())){
+			if(event.getEntityLiving() instanceof Player) {
+				if(((Player)event.getEntityLiving()).getFoodData().getFoodLevel() >= 18){
+					event.setAmount(event.getAmount() - 1);
+				}
+			}
 			event.getEntity().hurt(ConversionEffect.ConversionDamageSource, event.getAmount());
 			event.setCanceled(true);
 		}
@@ -128,7 +151,6 @@ public class ServerEvents {
 		}
 	}
 	
-
 	
 	@SubscribeEvent
 	public static void AttachCapabilities(final AttachCapabilitiesEvent<Entity> event) {

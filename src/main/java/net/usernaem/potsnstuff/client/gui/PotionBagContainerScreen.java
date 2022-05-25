@@ -18,35 +18,29 @@ public class PotionBagContainerScreen extends AbstractContainerScreen<PotionBagC
 
     public PotionBagContainerScreen(PotionBagContainer screenContainer, Inventory inv, Component titleIn) {
         super(screenContainer, inv, titleIn);
-        //this.playerInventory = inv;
         this.inventoryRows = screenContainer.getInventoryRows();
     }
 
     @Override
     public void render(PoseStack stack, int mouseX, int mouseY, float partialTicks) {
-        this.renderBackground(stack);
         super.render(stack, mouseX, mouseY, partialTicks);
         this.renderTooltip(stack, mouseX, mouseY);
     }
 
     @Override
     protected void renderLabels(PoseStack stack, int mouseX, int mouseY) {
-    	super.renderLabels(stack, mouseX, mouseY);
-    	//this.font.draw(stack, title.getContents(), 8, 6, 3875345);
-        //this.font.draw(stack, playerInventory.getDisplayName().getContents(), 8, this.getYSize() - 95 + 2, 3875345);
+    	this.font.draw(stack, this.title, 8, 6, 0x404040);
+        this.font.draw(stack, this.playerInventoryTitle, 8, this.getYSize() - 95 + 3, 0x404040);
     }
 
     @Override
     protected void renderBg(PoseStack stack, float partialTicks, int mouseX, int mouseY) {
         if (minecraft == null) return;
 
-        // Render the GUI texture
-        //GlStateManager.color4f(1, 1, 1, 1);
-        //minecraft.getTextureManager().bindForSetup(TEXTURE);
+        renderBackground(stack);
         RenderSystem.setShaderTexture(0, TEXTURE);
         int posX = (this.width - this.getXSize()) / 2;
         int posY = (this.height - this.getYSize()) / 2;
-        // blit(posX, posY, minU, minV, maxU, maxV)
         blit(stack, posX, posY, 0, 0, this.getXSize(), this.inventoryRows * 18 + 17);
         blit(stack, posX, posY + this.inventoryRows * 18 + 17, 0, 126, this.getXSize(), 96);
     }

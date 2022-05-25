@@ -16,6 +16,19 @@ public class WakeUpEffect extends InstantenousMobEffect{
 	}
 	
 	@Override
+	public void applyEffectTick(LivingEntity entity, int p_19468_) {
+		if (!entity.level.isClientSide && entity instanceof Player) {
+			ServerPlayer player = (ServerPlayer)entity;
+			BlockPos position = player.getRespawnPosition();
+			if(position != null) {
+				player.teleportTo(player.getServer().getLevel(player.getRespawnDimension()), position.getX() + 0.5f, position.getY(), position.getZ() + 0.5f,  player.getRespawnAngle(), 0);
+			}else {
+           	 player.displayClientMessage(new TextComponent("You need a bed in order to wake up"), true);
+			}
+		}
+	}
+	
+	@Override
 	public void applyInstantenousEffect(Entity p_180793_1_, Entity p_180793_2_, LivingEntity entity,
 			int p_180793_4_, double p_180793_5_) {
 		if (!entity.level.isClientSide && entity instanceof Player) {
