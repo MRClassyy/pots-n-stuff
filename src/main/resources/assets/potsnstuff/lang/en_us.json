@@ -361,6 +361,18 @@
 	"item.minecraft.lingering_potion.effect.disarm": "Lingering Potion of Disarming",
 	"item.minecraft.tipped_arrow.effect.disarm": "Arrow of Disarming",
 	
+	
+	"effect.potsnstuff.corrode": "Corrosion",
+	"effect.potsnstuff.corrode.description": "Deals damage to equiped armor",
+	"item.minecraft.potion.effect.corrode": "Potion of Corrosion",
+	"item.minecraft.potion.effect.strong_corrode": "Potion of Corrosion",
+	"item.minecraft.splash_potion.effect.corrode": "Splash Potion of Corrosion",
+	"item.minecraft.splash_potion.effect.strong_corrode": "Splash Potion of Corrosion",
+	"item.minecraft.lingering_potion.effect.corrode": "Lingering Potion of Corrosion",
+	"item.minecraft.lingering_potion.effect.strong_corrode": "Lingering Potion of Corrosion",
+	"item.minecraft.tipped_arrow.effect.corrode": "Arrow of Corrosion",
+	"item.minecraft.tipped_arrow.effect.strong_corrode": "Arrow of Corrosion",
+	
 	"item.potsnstuff.potion_bag": "Potion Bag",
 	"block.potsnstuff.potion_bag_block": "Potion Bag",
 	"container.potsnstuff.potion_bag": "Potion Bag                  Quiver",

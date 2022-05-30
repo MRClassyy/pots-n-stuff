@@ -8,6 +8,7 @@ public class EffectConfig {
     public static ForgeConfigSpec.IntValue ARROW_RESIST;
     public static ForgeConfigSpec.IntValue FALL_RESIST;
     public static ForgeConfigSpec.DoubleValue FRAIL_MULTIPLY;
+    public static ForgeConfigSpec.IntValue CORROSION_VALUE;
 	
 	 public static void registerServerConfig(ForgeConfigSpec.Builder SERVER_BUILDER) {
 	        SERVER_BUILDER.comment("Settings for the new effects").push("effects");
@@ -24,6 +25,9 @@ public class EffectConfig {
 	        FRAIL_MULTIPLY = SERVER_BUILDER
 	                .comment("Frail effect damage multiplier")
 	                .defineInRange("frailMultiply", 2.0f, 1.0f, 1000.0f);
+	        CORROSION_VALUE = SERVER_BUILDER
+	                .comment("Corrosion effect damage value")
+	                .defineInRange("corrosionDamage", 10, 0, 1000);
 
 	        SERVER_BUILDER.pop();
 	    }

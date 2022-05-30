@@ -2,10 +2,13 @@ package net.usernaem.potsnstuff.common.event;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -17,6 +20,7 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.world.ExplosionEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -26,6 +30,8 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.usernaem.potsnstuff.PotsNStuff;
 import net.usernaem.potsnstuff.common.effects.BombEffect;
 import net.usernaem.potsnstuff.common.effects.ConversionEffect;
+import net.usernaem.potsnstuff.common.items.crafting.TippedWeaponRecipe;
+import net.usernaem.potsnstuff.core.config.CraftConfig;
 import net.usernaem.potsnstuff.core.config.EffectConfig;
 import net.usernaem.potsnstuff.core.data.MyPotStuffProvider;
 import net.usernaem.potsnstuff.core.init.EffectInit;
@@ -150,7 +156,49 @@ public class ServerEvents {
 			event.setCanceled(true);
 		}
 	}
-	
+	@SubscribeEvent
+	public static void onWeaponAttack(final AttackEntityEvent event) {
+		Entity entity = event.getTarget();
+        Player player = event.getPlayer();
+        
+        if(player.getAttackStrengthScale(0)< CraftConfig.TIPPED_COOLDOWN.get())
+        	return;
+        
+        if (entity instanceof LivingEntity) {
+            LivingEntity livingEntity = (LivingEntity)entity;
+            
+            if(!TippedWeaponRecipe.isValidWeapon(player.getMainHandItem()))
+            	return;
+            
+            CompoundTag compoundTag = player.getMainHandItem().getTag();
+            if(compoundTag != null) {
+            	if(!CraftConfig.TIPPED_INFINITE.get()) {
+            		int charges = compoundTag.getInt("AttackCharges");
+            		
+            		if(charges <= 0) {
+            			compoundTag.remove("AttackCharges");
+            			compoundTag.remove("Potion");
+            		} else {
+                		addEffects(livingEntity, PotionUtils.getAllEffects(compoundTag.getCompound("Potion")));
+            			charges--;
+            			if(charges <= 0) {
+                			compoundTag.remove("Potion");
+                			compoundTag.remove("AttackCharges");
+            			}else {
+            				compoundTag.putInt("AttackCharges", charges);
+            			}
+            		}
+            	}else
+            		addEffects(livingEntity, PotionUtils.getAllEffects(compoundTag.getCompound("Potion")));
+            }
+        }
+        
+	}
+	public static void addEffects(LivingEntity livingEntity, List<MobEffectInstance> effectList) {
+		for(MobEffectInstance e: effectList)
+			livingEntity.addEffect(e);
+	}
+
 	
 	@SubscribeEvent
 	public static void AttachCapabilities(final AttachCapabilitiesEvent<Entity> event) {

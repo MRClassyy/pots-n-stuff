@@ -30,6 +30,7 @@ import net.usernaem.potsnstuff.common.effects.StingingEffect;
 import net.usernaem.potsnstuff.common.effects.UndeathEffect;
 import net.usernaem.potsnstuff.common.effects.WakeUpEffect;
 import net.usernaem.potsnstuff.common.effects.ConversionEffect;
+import net.usernaem.potsnstuff.common.effects.CorrosionEffect;
 
 public class EffectInit {
 	public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, PotsNStuff.MOD_ID_STRING);
@@ -59,6 +60,7 @@ public class EffectInit {
 	public static final RegistryObject<MobEffect> RANDOM_OBJECT = EFFECTS.register("disorient", () -> new DisorientEffect());
 	public static final RegistryObject<MobEffect> DBOUND_OBJECT = EFFECTS.register("deathbound", () -> new DeathboundEffect());
 	public static final RegistryObject<MobEffect> DISARM_OBJECT = EFFECTS.register("disarm", () -> new DisarmEffect());
+	public static final RegistryObject<MobEffect> ACID_OBJECT = EFFECTS.register("corrode", () -> new CorrosionEffect());
 
 
 
