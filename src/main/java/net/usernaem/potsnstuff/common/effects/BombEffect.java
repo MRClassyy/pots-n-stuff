@@ -14,6 +14,12 @@ public class BombEffect extends InstantenousMobEffect{
 		super(MobEffectCategory.HARMFUL, 7033103);
 	}
 	
+	@Override
+	public void applyEffectTick(LivingEntity entity, int amplifyer) {
+        entity.invulnerableTime = 0;
+		entity.level.explode(null, BombEffect.BombDamageSource, null, entity.getX(), entity.getY()+1.5, entity.getZ(), 1 + amplifyer * 0.3f, false, Explosion.BlockInteraction.NONE);
+	}
+	
 	
 	@Override
 	public void applyInstantenousEffect(Entity p_180793_1_, Entity p_180793_2_, LivingEntity entity,

@@ -14,6 +14,16 @@ public class LightningEffect extends InstantenousMobEffect{
 	}
 	
 	@Override
+	public void applyEffectTick(LivingEntity entity, int p_19468_) {
+		if(!entity.level.isClientSide){
+			LightningBolt lightning = new LightningBolt(EntityType.LIGHTNING_BOLT, entity.level);
+	        lightning.setPos(entity.getX(), entity.getY(), entity.getZ());
+			entity.invulnerableTime = 0;
+	        entity.level.addFreshEntity(lightning);
+		}
+	}
+	
+	@Override
 	public void applyInstantenousEffect(Entity p_180793_1_, Entity p_180793_2_, LivingEntity entity,
 			int p_180793_4_, double p_180793_5_) {
 		if(!entity.level.isClientSide){

@@ -7,7 +7,10 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.usernaem.potsnstuff.core.config.Config;
 import net.usernaem.potsnstuff.core.data.MyPotStuffCapability;
+import net.usernaem.potsnstuff.core.init.BlockEntityInit;
+import net.usernaem.potsnstuff.core.init.BlockInit;
 import net.usernaem.potsnstuff.core.init.ConteinerTypeInit;
 import net.usernaem.potsnstuff.core.init.EffectInit;
 import net.usernaem.potsnstuff.core.init.ItemInit;
@@ -35,9 +38,12 @@ public class PotsNStuff
         bus.addListener(MyPotStuffCapability::register);
         ConteinerTypeInit.CONTAINER_TYPES.register(bus);
         ItemInit.ITEMS.register(bus);
+        BlockInit.BLOCKS.register(bus);
+        BlockEntityInit.BLOCK_ENTITIES.register(bus);
         EffectInit.EFFECTS.register(bus);
         RecepiesInit.RECIPE_SERIALIZERS.register(bus);
         PotionInit.POTIONS.register(bus);
+        Config.register();
 		//MinecraftForge.EVENT_BUS.addListener(MyPotStuffCapability::AttachCapabilities);
 		MinecraftForge.EVENT_BUS.register(this);
     }

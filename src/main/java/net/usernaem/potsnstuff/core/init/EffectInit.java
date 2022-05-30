@@ -11,6 +11,7 @@ import net.usernaem.potsnstuff.common.effects.BombEffect;
 import net.usernaem.potsnstuff.common.effects.ClenseEffect;
 import net.usernaem.potsnstuff.common.effects.CureEffect;
 import net.usernaem.potsnstuff.common.effects.DeathboundEffect;
+import net.usernaem.potsnstuff.common.effects.DisarmEffect;
 import net.usernaem.potsnstuff.common.effects.DisorientEffect;
 import net.usernaem.potsnstuff.common.effects.FlightEffect;
 import net.usernaem.potsnstuff.common.effects.FrailEffect;
@@ -29,6 +30,7 @@ import net.usernaem.potsnstuff.common.effects.StingingEffect;
 import net.usernaem.potsnstuff.common.effects.UndeathEffect;
 import net.usernaem.potsnstuff.common.effects.WakeUpEffect;
 import net.usernaem.potsnstuff.common.effects.ConversionEffect;
+import net.usernaem.potsnstuff.common.effects.CorrosionEffect;
 
 public class EffectInit {
 	public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, PotsNStuff.MOD_ID_STRING);
@@ -57,6 +59,8 @@ public class EffectInit {
 	public static final RegistryObject<MobEffect> LIGHTFOOT_OBJECT = EFFECTS.register("lightfoot", () -> new LightFootEffect());
 	public static final RegistryObject<MobEffect> RANDOM_OBJECT = EFFECTS.register("disorient", () -> new DisorientEffect());
 	public static final RegistryObject<MobEffect> DBOUND_OBJECT = EFFECTS.register("deathbound", () -> new DeathboundEffect());
+	public static final RegistryObject<MobEffect> DISARM_OBJECT = EFFECTS.register("disarm", () -> new DisarmEffect());
+	public static final RegistryObject<MobEffect> ACID_OBJECT = EFFECTS.register("corrode", () -> new CorrosionEffect());
 
 
 

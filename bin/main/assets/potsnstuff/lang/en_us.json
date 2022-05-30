@@ -1,5 +1,6 @@
 {
 	"effect.potsnstuff.fuze": "fuze",
+	"effect.potsnstuff.fuze.description": "Applies a delayed explosion effect to the entity, once the effect time runs out, an explosion will occur at the entities feet (the explosion does not destroy blocks nor delete items)",
 	"item.minecraft.potion.effect.fuze": "Potion of Explosion",
 	"item.minecraft.potion.effect.long_fuze": "Potion of Explosion",
 	"item.minecraft.potion.effect.strong_fuze": "Potion of Explosion",
@@ -14,11 +15,14 @@
 	"item.minecraft.tipped_arrow.effect.strong_fuze": "Arrow of Explosion",
 	
 	"effect.potsnstuff.bomb": "bomb",
+	"effect.potsnstuff.bomb.description": "Instant version of the Fuze effect, an explosion happens the moment the effect is applied",
 	"death.attack.BombDamage": "%s exploaded",
+	"death.attack.BombDamage.player": "%s exploaded",
 	"death.attack.Conversion": "%s healed to death",
 	"death.attack.Conversion.player": "%s healed to death",
 	
 	"effect.potsnstuff.grounded": "grounded",
+	"effect.potsnstuff.grounded.description": "Forces the entity to the ground, affected entity will not be able to jump or fly up",
 	"item.minecraft.potion.effect.grounding": "Potion of Grounding",
 	"item.minecraft.potion.effect.long_grounding": "Potion of Grounding",
 	"item.minecraft.potion.effect.strong_grounding": "Potion of Grounding",
@@ -33,6 +37,7 @@
 	"item.minecraft.tipped_arrow.effect.strong_grounding": "Arrow of Grounding",
 	
 	"effect.potsnstuff.launched": "launched",
+	"effect.potsnstuff.launched.description": "Launches the entity high into the air, the stronger the effect, the higher they will be launched",
 	"item.minecraft.potion.effect.launch": "Potion of Launching",
 	"item.minecraft.potion.effect.strong_launch": "Potion of Launching",
 	"item.minecraft.splash_potion.effect.launch": "Splash Potion of Launching",
@@ -130,12 +135,14 @@
 	"item.minecraft.tipped_arrow.effect.long_blind": "Arrow of Blindness",
 	
 	"effect.potsnstuff.aqua": "aqua",
+	"effect.potsnstuff.aqua.description":"Creates a water source block at the affected entities feet",
 	"item.minecraft.potion.effect.aqua": "Potion of Aqua",
 	"item.minecraft.splash_potion.effect.aqua": "Splash Potion of Aqua",
 	"item.minecraft.lingering_potion.effect.aqua": "Lingering Potion of Aqua",
 	"item.minecraft.tipped_arrow.effect.aqua": "Arrow of Aqua",
 	
 	"effect.potsnstuff.hellstouch": "hells touch",
+	"effect.potsnstuff.hellstouch.description":"Creates a lava source block at the affected entities feet",
 	"item.minecraft.potion.effect.hells_touch": "Potion of Hells Touch",
 	"item.minecraft.splash_potion.effect.hells_touch": "Splash Potion of Hells Touch",
 	"item.minecraft.lingering_potion.effect.hells_touch": "Lingering Potion of Hells Touch",
@@ -144,6 +151,9 @@
 	"effect.potsnstuff.clense": "clense",
 	"effect.potsnstuff.cure": "cure",
 	"effect.potsnstuff.nullify": "nullify",
+	"effect.potsnstuff.clense.description": "Removes all active effects",
+	"effect.potsnstuff.cure.description": "Removes all active harmfull effects",
+	"effect.potsnstuff.nullify.description": "Removes all active beneficial effects",
 	"item.minecraft.potion.effect.clense": "Potion of Clensing",
 	"item.minecraft.potion.effect.long_clense": "Potion of Nullifying",
 	"item.minecraft.potion.effect.strong_clense": "Potion of Curing",
@@ -158,6 +168,7 @@
 	"item.minecraft.tipped_arrow.effect.strong_clense": "Arrow of Curing",
 	
 	"effect.potsnstuff.recall": "recall",
+	"effect.potsnstuff.recall.description":"Applies a delayed effect on the entity, when the effect runs out, the affected entity is teleported back to the position where the effect was applied (effect wont teleport back if dimensions are different)",
 	"item.minecraft.potion.effect.recall": "Potion of Recall",
 	"item.minecraft.potion.effect.long_recall": "Potion of Recall",
 	"item.minecraft.splash_potion.effect.recall": "Splash Potion of Recall",
@@ -168,6 +179,7 @@
 	"item.minecraft.tipped_arrow.effect.long_recall": "Arrow of Recall",
 	
 	"effect.potsnstuff.photosynthesis": "photosynthesis",
+	"effect.potsnstuff.photosynthesis.description":"Regenerates the entities hunger level  as long as its day time and there are no blocks above the entities head",
 	"item.minecraft.potion.effect.photosynthesis": "Potion of Photosynthesis",
 	"item.minecraft.potion.effect.long_photosynthesis": "Potion of Photosynthesis",
 	"item.minecraft.potion.effect.strong_photosynthesis": "Potion of Photosynthesis",
@@ -182,6 +194,7 @@
 	"item.minecraft.tipped_arrow.effect.strong_photosynthesis": "Arrow of Photosynthesis",
 	
 	"effect.potsnstuff.inferno": "inferno",
+	"effect.potsnstuff.inferno.description": "Sets entity on fire as long as the effect lasts, higher effect level also removes fire immunity effect",
 	"item.minecraft.potion.effect.inferno": "Greek Fire",
 	"item.minecraft.potion.effect.long_inferno": "Greek Fire",
 	"item.minecraft.potion.effect.strong_inferno": "Greek Fire",
@@ -196,6 +209,7 @@
 	"item.minecraft.tipped_arrow.effect.strong_inferno": "Arrow of Greek Fire",
 
 	"effect.potsnstuff.reflect": "projectile immunity",
+	"effect.potsnstuff.reflect.description": "Grants immunity to projectile weapons",
 	"item.minecraft.potion.effect.reflection": "Potion of Projectile Immunity",
 	"item.minecraft.potion.effect.long_reflection": "Potion of Projectile Immunity",
 	"item.minecraft.splash_potion.effect.reflection": "Splash Potion of Projectile Immunity",
@@ -206,6 +220,7 @@
 	"item.minecraft.tipped_arrow.effect.long_reflection": "Arrow of Projectile Immunity",
 	
 	"effect.potsnstuff.blast": "blast immunity",
+	"effect.potsnstuff.blast.description": "Grants immunity to explosion damage",
 	"item.minecraft.potion.effect.blast": "Potion of Blast Immunity",
 	"item.minecraft.potion.effect.long_blast": "Potion of Blast Immunity",
 	"item.minecraft.splash_potion.effect.blast": "Splash Potion of Blast Immunity",
@@ -216,6 +231,7 @@
 	"item.minecraft.tipped_arrow.effect.long_blast": "Arrow of Blast Immunity",
 	
 	"effect.potsnstuff.undeath": "undeath",
+	"effect.potsnstuff.undeath.description": "Totem of undying effect, uppon entity death the effect is removed and the entity is kept alive",
 	"item.minecraft.potion.effect.undeath": "Potion of Undying",
 	"item.minecraft.potion.effect.long_undeath": "Potion of Undying",
 	"item.minecraft.potion.effect.strong_undeath": "Potion of Undying",
@@ -230,12 +246,14 @@
 	"item.minecraft.tipped_arrow.effect.strong_undeath": "Arrow of Undying",
 	
 	"effect.potsnstuff.lightning": "lightning",
+	"effect.potsnstuff.lightning.description": "Summons a bolt of lightning",
 	"item.minecraft.potion.effect.lightning": "Lightning in a Bottle",
 	"item.minecraft.splash_potion.effect.lightning": "Splash Lightning in a Bottle",
 	"item.minecraft.lingering_potion.effect.lightning": "Lingering Lightning in a Bottle",
 	"item.minecraft.tipped_arrow.effect.lightning": "Arrow of Lightning in a Bottle",
 	
 	"effect.potsnstuff.frail": "frail",
+	"effect.potsnstuff.frail.description": "Multiplies the damage taken while this effect is active",
 	"item.minecraft.potion.effect.frail": "Potion of Frailness",
 	"item.minecraft.potion.effect.long_frail": "Potion of Frailness",
 	"item.minecraft.splash_potion.effect.frail": "Splash Potion of Frailness",
@@ -246,6 +264,7 @@
 	"item.minecraft.tipped_arrow.effect.long_frail": "Arrow of Frailness",
 	
 	"effect.potsnstuff.flight": "flight",
+	"effect.potsnstuff.flight.description": "Grants the ability of creative flight",
 	"item.minecraft.potion.effect.flight": "Potion of Flight",
 	"item.minecraft.potion.effect.long_flight": "Potion of Flight",
 	"item.minecraft.splash_potion.effect.flight": "Splash Potion of Flight",
@@ -266,6 +285,7 @@
 	"item.minecraft.tipped_arrow.effect.long_floating": "Arrow of Levitation",
 	
 	"effect.potsnstuff.sting": "stinging",
+	"effect.potsnstuff.sting.description": "Sweetberry bush effect, entity takes damage whenever it moves",
 	"item.minecraft.potion.effect.sting": "Potion of Stinging",
 	"item.minecraft.potion.effect.long_sting": "Potion of Stinging",
 	"item.minecraft.potion.effect.strong_sting": "Splash Potion of Stinging",
@@ -280,6 +300,7 @@
 	"item.minecraft.tipped_arrow.effect.strong_sting": "Splash Potion of Stinging",
 	
 	"effect.potsnstuff.conversion": "conversion",
+	"effect.potsnstuff.conversion.description": "Converts damage taken to health and healing taken to damage",
 	"item.minecraft.potion.effect.conversion": "Potion of Conversion",
 	"item.minecraft.potion.effect.long_conversion": "Potion of Conversion",
 	"item.minecraft.splash_potion.effect.conversion": "Splash Potion of Conversion",
@@ -290,12 +311,14 @@
 	"item.minecraft.tipped_arrow.effect.long_conversion": "Arrow of Conversion",
 	
 	"effect.potsnstuff.wakeup": "Wake up",
+	"effect.potsnstuff.wakeup.description": "Returns player to their bed location",
 	"item.minecraft.potion.effect.wake_up": "Wake up Call",
 	"item.minecraft.splash_potion.effect.wake_up": "Splash Wake up Call",
 	"item.minecraft.lingering_potion.effect.wake_up": "Lingering Wake up Call",
 	"item.minecraft.tipped_arrow.effect.wake_up": "Arrow of Waking up",
 	
 	"effect.potsnstuff.lightfoot": "Light Foot",
+	"effect.potsnstuff.lightfoot.description": "Grants immunity to fall damage",
 	"item.minecraft.potion.effect.light_foot": "Potion of Fall Immunity",
 	"item.minecraft.potion.effect.long_light_foot": "Potion of Fall Immunity",
 	"item.minecraft.splash_potion.effect.light_foot": "Splash Potion of Fall Immunity",
@@ -306,6 +329,7 @@
 	"item.minecraft.tipped_arrow.effect.long_light_foot": "Arrow of Fall Immunity",
 	
 	"effect.potsnstuff.disorient": "Disoriented",
+	"effect.potsnstuff.disorient.description": "Moves entity in random directions",
 	"item.minecraft.potion.effect.disorient": "Potion of Disorienting",
 	"item.minecraft.potion.effect.long_disorient": "Potion of Disorienting",
 	"item.minecraft.potion.effect.strong_disorient": "Splash Potion of Disorienting",
@@ -320,6 +344,7 @@
 	"item.minecraft.tipped_arrow.effect.strong_disorient": "Splash Potion of Disorienting",
 	
 	"effect.potsnstuff.deathbound": "Deathbound",
+	"effect.potsnstuff.deathbound.description": "Prevents the undying effect from activating when entity dies (deathbound is automaticaly added when undying effect prevents death)",
 	"item.minecraft.potion.effect.deathbound": "Potion of Deathbound",
 	"item.minecraft.potion.effect.long_deathbound": "Potion of Deathbound",
 	"item.minecraft.splash_potion.effect.deathbound": "Splash Potion of Deathbound",
@@ -329,12 +354,33 @@
 	"item.minecraft.tipped_arrow.effect.deathbound": "Arrow of Deathbound",
 	"item.minecraft.tipped_arrow.effect.long_deathbound": "Arrow of Deathbound",
 	
+	"effect.potsnstuff.disarm": "Disarm",
+	"effect.potsnstuff.disarm.description": "Forces entity to drop item in its main hand (effect does not work on villagers)",
+	"item.minecraft.potion.effect.disarm": "Potion of Disarming",
+	"item.minecraft.splash_potion.effect.disarm": "Splash Potion of Disarming",
+	"item.minecraft.lingering_potion.effect.disarm": "Lingering Potion of Disarming",
+	"item.minecraft.tipped_arrow.effect.disarm": "Arrow of Disarming",
+	
+	
+	"effect.potsnstuff.corrode": "Corrosion",
+	"effect.potsnstuff.corrode.description": "Deals damage to equiped armor",
+	"item.minecraft.potion.effect.corrode": "Potion of Corrosion",
+	"item.minecraft.potion.effect.strong_corrode": "Potion of Corrosion",
+	"item.minecraft.splash_potion.effect.corrode": "Splash Potion of Corrosion",
+	"item.minecraft.splash_potion.effect.strong_corrode": "Splash Potion of Corrosion",
+	"item.minecraft.lingering_potion.effect.corrode": "Lingering Potion of Corrosion",
+	"item.minecraft.lingering_potion.effect.strong_corrode": "Lingering Potion of Corrosion",
+	"item.minecraft.tipped_arrow.effect.corrode": "Arrow of Corrosion",
+	"item.minecraft.tipped_arrow.effect.strong_corrode": "Arrow of Corrosion",
+	
 	"item.potsnstuff.potion_bag": "Potion Bag",
+	"block.potsnstuff.potion_bag_block": "Potion Bag",
+	"container.potsnstuff.potion_bag": "Potion Bag                  Quiver",
+	"container.potsnstuff.potion_bag_block": "Potion Bag                  Quiver",
 	"item.potsnstuff.vial_empty": "Empty Vial",
 	"item.potsnstuff.marble_empty": "Empty Marble",
 	"item.potsnstuff.diamond_nugget": "Diamond Shard",
 	"item.potsnstuff.potion_vial": "Stackable %s",
-	"item.potsnstuff.potion_marble": "Throwable %s",
-	"container.potsnstuff.potion_bag": "Potion Bag                  Quiver"
+	"item.potsnstuff.potion_marble": "Throwable %s"
 }
 	

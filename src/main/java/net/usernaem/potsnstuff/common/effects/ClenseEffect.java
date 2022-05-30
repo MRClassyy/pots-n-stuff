@@ -14,6 +14,17 @@ public class ClenseEffect extends InstantenousMobEffect{
 	}
 	
 	@Override
+	public void applyEffectTick(LivingEntity entity, int p_19468_) {
+		 if (!entity.level.isClientSide) {
+			 if(entity.hasEffect(EffectInit.RECALL_OBJECT.get())) {
+				 MobEffect eff =(entity.getEffect(EffectInit.RECALL_OBJECT.get()).getEffect());
+				 eff.applyInstantenousEffect(null, null, entity, 0, 0);
+			 }
+			 entity.removeAllEffects(); 
+			 }
+	}
+	
+	@Override
 	public void applyInstantenousEffect(Entity p_180793_1_, Entity p_180793_2_, LivingEntity entity,
 			int p_180793_4_, double p_180793_5_) {
 

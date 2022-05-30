@@ -11,6 +11,7 @@ import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PotionItem;
+
 import net.minecraft.nbt.CompoundTag;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -73,7 +74,7 @@ public class PotionBagContainer  extends AbstractContainerMenu{
 	            }
 	        }
 	    }
-	private static ItemStack getHeldItem(Player player) {
+	public static ItemStack getHeldItem(Player player) {
         // Determine which held item is a backpack (if either)
         if (isPotionBag(player.getMainHandItem())) {
             return player.getMainHandItem();

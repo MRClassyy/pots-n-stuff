@@ -14,6 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 import net.usernaem.potsnstuff.PotsNStuff;
+import net.usernaem.potsnstuff.core.config.CraftConfig;
 import net.usernaem.potsnstuff.core.init.ItemInit;
 import net.usernaem.potsnstuff.core.init.RecepiesInit;
 
@@ -57,7 +58,7 @@ public class PotionMarbleRecipe extends CustomRecipe{
 	@Override
 	public ItemStack assemble(CraftingContainer inventory) {
 		ItemStack itemStack = inventory.getItem(1 + inventory.getWidth());
-		if(itemStack.getItem() != Items.SPLASH_POTION) {
+		if(itemStack.getItem() != Items.SPLASH_POTION || !CraftConfig.CRAFT_MARBL.get()) {
 			return ItemStack.EMPTY;
 		}else {
 			ItemStack itemstack1 = new ItemStack(ItemInit.POTMARBL_OBJECT.get(), 4);

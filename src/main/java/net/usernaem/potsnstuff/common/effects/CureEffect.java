@@ -13,6 +13,22 @@ public class CureEffect extends InstantenousMobEffect{
 	public CureEffect() {
 		super(MobEffectCategory.BENEFICIAL, 65424);
 	}
+	
+	@Override
+	public void applyEffectTick(LivingEntity entity, int p_19468_) {
+
+		 if (!entity.level.isClientSide) {
+			  ArrayList<MobEffectInstance> tmpArrayList = new ArrayList<>(entity.getActiveEffects());
+	    	  Iterator<MobEffectInstance> iterator = tmpArrayList.iterator();
+			 while (iterator.hasNext()) {
+	             MobEffectInstance e = iterator.next();
+				 if (e.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
+					 	 entity.removeEffect(e.getEffect());
+					 	 iterator.remove();
+		          }
+			 }
+		 }
+	}
 		
 	@Override
 	public void applyInstantenousEffect(Entity p_180793_1_, Entity p_180793_2_, LivingEntity entity,
