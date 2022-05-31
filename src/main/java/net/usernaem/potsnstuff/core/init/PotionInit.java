@@ -120,7 +120,7 @@ public class PotionInit {
         PotionRecipeSetup.addPotionRecipes(Potions.THICK, Items.INK_SAC, BLIND.get(), LONG_BLIND.get(), null);  
         PotionRecipeSetup.addPotionRecipes(DEATHBOUND.get(), Items.FERMENTED_SPIDER_EYE, DEATHBOUND.get(), LONG_DEATHBOUND.get(), null);  
         PotionRecipeSetup.addPotionRecipes(Potions.THICK, Items.SLIME_BALL, DISARM.get(), null, null); 
-        PotionRecipeSetup.addPotionRecipes(Potions.THICK, Items.GLOW_INK_SAC, CORRODE.get(), null, STRONG_CORRODE.get()); 
+        PotionRecipeSetup.addPotionRecipes(Potions.THICK, Items.LIME_DYE, CORRODE.get(), null, STRONG_CORRODE.get()); 
     }
 
    

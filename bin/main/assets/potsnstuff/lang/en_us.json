@@ -355,7 +355,7 @@
 	"item.minecraft.tipped_arrow.effect.long_deathbound": "Arrow of Deathbound",
 	
 	"effect.potsnstuff.disarm": "Disarm",
-	"effect.potsnstuff.disarm.description": "Forces entity to drop item in its main hand (effect does not work on villagers)",
+	"effect.potsnstuff.disarm.description": "Forces entity to drop item in its main hand (effect does not work on villagers or on cursed items)",
 	"item.minecraft.potion.effect.disarm": "Potion of Disarming",
 	"item.minecraft.splash_potion.effect.disarm": "Splash Potion of Disarming",
 	"item.minecraft.lingering_potion.effect.disarm": "Lingering Potion of Disarming",
