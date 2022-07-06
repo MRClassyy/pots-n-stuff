@@ -1,7 +1,7 @@
 package net.usernaem.potsnstuff.common.effects;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.InstantenousMobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -23,7 +23,7 @@ public class WakeUpEffect extends InstantenousMobEffect{
 			if(position != null) {
 				player.teleportTo(player.getServer().getLevel(player.getRespawnDimension()), position.getX() + 0.5f, position.getY(), position.getZ() + 0.5f,  player.getRespawnAngle(), 0);
 			}else {
-           	 player.displayClientMessage(new TextComponent("You need a bed in order to wake up"), true);
+           	 player.displayClientMessage(Component.translatable("You need a bed in order to wake up"), true);
 			}
 		}
 	}
@@ -37,7 +37,7 @@ public class WakeUpEffect extends InstantenousMobEffect{
 			if(position != null) {
 				player.teleportTo(player.getServer().getLevel(player.getRespawnDimension()), position.getX() + 0.5f, position.getY(), position.getZ() + 0.5f,  player.getRespawnAngle(), 0);
 			}else {
-           	 player.displayClientMessage(new TextComponent("You need a bed in order to wake up"), true);
+           	 player.displayClientMessage(Component.translatable("You need a bed in order to wake up"), true);
 			}
 		}
 	}

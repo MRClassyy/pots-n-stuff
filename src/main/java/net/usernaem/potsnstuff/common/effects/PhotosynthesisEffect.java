@@ -29,10 +29,10 @@ public class PhotosynthesisEffect extends MobEffect{
 	
 	private boolean isSunBathing(LivingEntity entity) {
 		if(entity.level.isDay() && !entity.level.isRaining()) {
-			float light = entity.getBrightness();
+			Boolean light = entity.level.isDay();
 			BlockPos bPos = new BlockPos(entity.getX(), Math.round(entity.getY()),entity.getZ());
 			bPos = entity.getVehicle() instanceof Boat ? bPos.above() : bPos;
-			if(light > 0.5f && entity.level.canSeeSky(bPos)) {
+			if(light && entity.level.canSeeSky(bPos)) {
 				return true;
 			}
 		}

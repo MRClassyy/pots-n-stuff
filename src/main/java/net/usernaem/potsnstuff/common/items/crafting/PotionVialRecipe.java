@@ -12,7 +12,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 import net.usernaem.potsnstuff.PotsNStuff;
 import net.usernaem.potsnstuff.core.config.CraftConfig;
 import net.usernaem.potsnstuff.core.init.ItemInit;
@@ -73,7 +72,7 @@ public class PotionVialRecipe extends CustomRecipe{
       return RecepiesInit.POTION_VIAL_OBJECT.get();
    }
 	   
-   public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<PotionVialRecipe>{
+   public static class Serializer implements RecipeSerializer<PotionVialRecipe>{
 		@Override
 		public PotionVialRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 			return new PotionVialRecipe(recipeId);

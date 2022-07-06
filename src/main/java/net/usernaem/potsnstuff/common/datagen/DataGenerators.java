@@ -13,7 +13,7 @@ public class DataGenerators {
 	    public static void gatherData(GatherDataEvent event) {
 		 DataGenerator generator = event.getGenerator();
 	        if (event.includeServer()) {
-	        	generator.addProvider(new LootTables(generator));
+	        	generator.addProvider(true, new LootTables(generator));
 	        }
 	 }
 }

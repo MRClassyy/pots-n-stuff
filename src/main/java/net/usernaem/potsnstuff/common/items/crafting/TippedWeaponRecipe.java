@@ -19,7 +19,6 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 import net.usernaem.potsnstuff.PotsNStuff;
 import net.usernaem.potsnstuff.core.config.CraftConfig;
 import net.usernaem.potsnstuff.core.init.RecepiesInit;
@@ -132,7 +131,7 @@ public class TippedWeaponRecipe  extends CustomRecipe{
 	public RecipeSerializer<?> getSerializer() {
 		return RecepiesInit.TIPPED_WEAPON_OBJECT.get();
 	}
-	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<TippedWeaponRecipe>{
+	public static class Serializer implements RecipeSerializer<TippedWeaponRecipe>{
 		@Override
 		public TippedWeaponRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 			return new TippedWeaponRecipe(recipeId);
