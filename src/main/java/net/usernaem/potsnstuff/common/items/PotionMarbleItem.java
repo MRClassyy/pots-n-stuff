@@ -18,7 +18,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -51,7 +50,7 @@ public class PotionMarbleItem extends ThrowablePotionItem{
 	
 	   @Override
 		public Component getName(ItemStack p_200295_1_) {
-			  return new TranslatableComponent(getDescriptionId(), new TranslatableComponent(PotionUtils.getPotion(p_200295_1_).getName("item.minecraft.potion.effect.")));
+			  return Component.translatable(getDescriptionId(), Component.translatable(PotionUtils.getPotion(p_200295_1_).getName("item.minecraft.potion.effect.")));
 			//return super.getName(p_200295_1_);   
 			      //return new TranslationTextComponent(this.getDescriptionId(p_200295_1_));
 		}

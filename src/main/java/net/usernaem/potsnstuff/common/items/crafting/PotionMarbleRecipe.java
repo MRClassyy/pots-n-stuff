@@ -12,7 +12,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 import net.usernaem.potsnstuff.PotsNStuff;
 import net.usernaem.potsnstuff.core.config.CraftConfig;
 import net.usernaem.potsnstuff.core.init.ItemInit;
@@ -77,7 +76,7 @@ public class PotionMarbleRecipe extends CustomRecipe{
 	public RecipeSerializer<?> getSerializer() {
 		return RecepiesInit.POTION_MARBL_OBJECT.get();
 	}
-	public static class Serializer extends ForgeRegistryEntry<RecipeSerializer<?>> implements RecipeSerializer<PotionMarbleRecipe>{
+	public static class Serializer implements RecipeSerializer<PotionMarbleRecipe>{
 		@Override
 		public PotionMarbleRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
 			return new PotionMarbleRecipe(recipeId);

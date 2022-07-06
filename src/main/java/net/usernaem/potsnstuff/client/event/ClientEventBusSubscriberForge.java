@@ -3,7 +3,7 @@ package net.usernaem.potsnstuff.client.event;
 import java.util.List;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
@@ -31,13 +31,13 @@ public class ClientEventBusSubscriberForge {
         }
         List<MobEffectInstance> effects = (List<MobEffectInstance>)PotionUtils.getAllEffects(stack.getTag().getCompound("Potion"));
         for ( MobEffectInstance i : effects) {
-            event.getToolTip().add(new TranslatableComponent(i.getEffect().getDisplayName().getString().concat(ClientUtils.PotAmplifierValue(i.getAmplifier())).concat(timeSetter(i))).withStyle(i.getEffect().getCategory() == MobEffectCategory.HARMFUL ? ChatFormatting.RED : ChatFormatting.BLUE));
+            event.getToolTip().add(Component.translatable(i.getEffect().getDisplayName().getString().concat(ClientUtils.PotAmplifierValue(i.getAmplifier())).concat(timeSetter(i))).withStyle(i.getEffect().getCategory() == MobEffectCategory.HARMFUL ? ChatFormatting.RED : ChatFormatting.BLUE));
         }
         if (!CraftConfig.TIPPED_INFINITE.get()) {
             int charges = stack.getTag().getInt("AttackCharges");
             int maxCount = CraftConfig.TIPPED_COUNT.get();
             if (charges > 0) {
-                event.getToolTip().add(new TranslatableComponent("charges left: " + charges + "/" + maxCount).withStyle(ChatFormatting.BLUE));
+                event.getToolTip().add(Component.translatable("charges left: " + charges + "/" + maxCount).withStyle(ChatFormatting.BLUE));
             }
         }
     }

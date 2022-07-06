@@ -22,7 +22,6 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -71,7 +70,7 @@ public class PotionBagItem extends BlockItem{
         	if(!playerIn.isCrouching()) {
         	      	playerIn.openMenu(new SimpleMenuProvider(
                     (id, playerInventory, player) -> new PotionBagContainer(id, playerInventory),
-                    new TranslatableComponent("container.potsnstuff.potion_bag")
+                    Component.translatable("container.potsnstuff.potion_bag")
             ));
         	}
         }
@@ -101,7 +100,7 @@ public class PotionBagItem extends BlockItem{
             }
 
             if (j - i > 0) {
-               list.add((new TranslatableComponent("container.shulkerBox.more", j - i)).withStyle(ChatFormatting.ITALIC));
+               list.add((Component.translatable("container.shulkerBox.more", j - i)).withStyle(ChatFormatting.ITALIC));
             }
     	}
     }
