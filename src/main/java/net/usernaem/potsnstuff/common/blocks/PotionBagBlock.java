@@ -168,7 +168,7 @@ public class PotionBagBlock extends Block implements EntityBlock{
 
 		if(!level.isClientSide && level.getBlockEntity(pos) instanceof final PotionBagBlockEntity bag) {
 			final MenuProvider container = new SimpleMenuProvider(PotionBagBlockContainer.getServerContainer(bag, pos), PotionBagBlockEntity.TITLE); 
-			NetworkHooks.openGui((ServerPlayer)player, container, pos);
+			NetworkHooks.openScreen((ServerPlayer)player, container, pos);
 		}
 		
 		return InteractionResult.SUCCESS;

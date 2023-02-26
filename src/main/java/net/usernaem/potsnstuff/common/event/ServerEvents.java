@@ -7,10 +7,15 @@ import java.util.List;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArrowItem;
+import net.minecraft.world.item.CrossbowItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -20,9 +25,12 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.ArrowLooseEvent;
+import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.world.ExplosionEvent;
+import net.minecraftforge.event.level.ExplosionEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
+import net.minecraftforge.event.entity.living.LivingGetProjectileEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -30,6 +38,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.usernaem.potsnstuff.PotsNStuff;
 import net.usernaem.potsnstuff.common.effects.BombEffect;
 import net.usernaem.potsnstuff.common.effects.ConversionEffect;
+import net.usernaem.potsnstuff.common.items.GloveItem;
 import net.usernaem.potsnstuff.common.items.crafting.TippedWeaponRecipe;
 import net.usernaem.potsnstuff.core.config.CraftConfig;
 import net.usernaem.potsnstuff.core.config.EffectConfig;
@@ -43,13 +52,13 @@ public class ServerEvents {
 	@SubscribeEvent
     public static void onBeforeDamage(LivingAttackEvent event) {
 		if (event.getSource().isProjectile()) {
-			if(event.getEntityLiving().hasEffect(EffectInit.REFLECT_OBJECT.get())) {
+			if(event.getEntity().hasEffect(EffectInit.REFLECT_OBJECT.get())) {
 	           int percent = EffectConfig.ARROW_RESIST.get();
 	           if(percent == 100)
 	        	   event.setCanceled(true);
 	        }
 	    }else if (event.getSource().isExplosion() || event.getSource().equals(BombEffect.BombDamageSource)) {
-           if(event.getEntityLiving().hasEffect(EffectInit.BLAST_OBJECT.get())) {
+           if(event.getEntity().hasEffect(EffectInit.BLAST_OBJECT.get())) {
         	   int percent = EffectConfig.BLAST_RESIST.get();
         	   if(percent == 100)
         		   event.setCanceled(true);
@@ -59,21 +68,21 @@ public class ServerEvents {
 
 	@SubscribeEvent
     public static void onTakenDamage(LivingHurtEvent event) {
-        if(event.getEntityLiving().hasEffect(EffectInit.FRAIL_OBJECT.get())) {
+        if(event.getEntity().hasEffect(EffectInit.FRAIL_OBJECT.get())) {
      	   event.setAmount((float) (event.getAmount() * EffectConfig.FRAIL_MULTIPLY.get()));
         }
 		DamageSource dmgSource = event.getSource();
         if(dmgSource == DamageSource.FALL) {
-        	if(event.getEntityLiving().hasEffect(EffectInit.LIGHTFOOT_OBJECT.get())) {
+        	if(event.getEntity().hasEffect(EffectInit.LIGHTFOOT_OBJECT.get())) {
         		calculateDamage(EffectConfig.FALL_RESIST.get(), event);
         	}
         }
         else if(dmgSource.isExplosion() || dmgSource.equals(BombEffect.BombDamageSource)) {
-           if(event.getEntityLiving().hasEffect(EffectInit.BLAST_OBJECT.get()))
+           if(event.getEntity().hasEffect(EffectInit.BLAST_OBJECT.get()))
         	   calculateDamage(EffectConfig.BLAST_RESIST.get(), event);
         }
         else if(dmgSource.isProjectile()) {
-           if(event.getEntityLiving().hasEffect(EffectInit.REFLECT_OBJECT.get())) {
+           if(event.getEntity().hasEffect(EffectInit.REFLECT_OBJECT.get())) {
         	   calculateDamage(EffectConfig.ARROW_RESIST.get(), event);
            }
         }
@@ -90,17 +99,17 @@ public class ServerEvents {
 	
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public static void ConvertDamageEvent(LivingHurtEvent event) {
-		if(event.getEntityLiving().hasEffect(EffectInit.CONVERT_OBJECT.get()) && !event.getSource().equals(DamageSource.OUT_OF_WORLD) && !event.getSource().equals(ConversionEffect.ConversionDamageSource)) {
-			event.getEntityLiving().setHealth(event.getEntityLiving().getHealth() + event.getAmount());
+		if(event.getEntity().hasEffect(EffectInit.CONVERT_OBJECT.get()) && !event.getSource().equals(DamageSource.OUT_OF_WORLD) && !event.getSource().equals(ConversionEffect.ConversionDamageSource)) {
+			event.getEntity().setHealth(event.getEntity().getHealth() + event.getAmount());
 			event.setCanceled(true);
 		}
 	}
 	
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public static void ConvertHealEvent(LivingHealEvent event) {
-		if(event.getEntityLiving().hasEffect(EffectInit.CONVERT_OBJECT.get())){
-			if(event.getEntityLiving() instanceof Player) {
-				if(((Player)event.getEntityLiving()).getFoodData().getFoodLevel() >= 18){
+		if(event.getEntity().hasEffect(EffectInit.CONVERT_OBJECT.get())){
+			if(event.getEntity() instanceof Player) {
+				if(((Player)event.getEntity()).getFoodData().getFoodLevel() >= 18){
 					event.setAmount(event.getAmount() - 1);
 				}
 			}
@@ -111,10 +120,10 @@ public class ServerEvents {
 	
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public static void onEntityJump(LivingJumpEvent event) {
-		if(event.getEntityLiving().hasEffect(EffectInit.GROUNDED_OBJECT.get())) {
-			Vec3 entityV3 = event.getEntityLiving().getDeltaMovement();
+		if(event.getEntity().hasEffect(EffectInit.GROUNDED_OBJECT.get())) {
+			Vec3 entityV3 = event.getEntity().getDeltaMovement();
 			if(entityV3.y>0)
-				event.getEntityLiving().setDeltaMovement(entityV3.x, 0, entityV3.z);
+				event.getEntity().setDeltaMovement(entityV3.x, 0, entityV3.z);
 		}
 	}
 	
@@ -132,8 +141,8 @@ public class ServerEvents {
 	
 	@SubscribeEvent
 	public static void onEntityDeath(LivingDeathEvent event) {
-		if(event.getEntityLiving().hasEffect(EffectInit.UNDEATH_OBJECT.get())) {
-			LivingEntity entity = event.getEntityLiving();
+		if(event.getEntity().hasEffect(EffectInit.UNDEATH_OBJECT.get())) {
+			LivingEntity entity = event.getEntity();
 			if(entity.hasEffect(EffectInit.DBOUND_OBJECT.get())) {
 				event.setCanceled(false);
 				return;
@@ -159,7 +168,7 @@ public class ServerEvents {
 	@SubscribeEvent
 	public static void onWeaponAttack(final AttackEntityEvent event) {
 		Entity entity = event.getTarget();
-        Player player = event.getPlayer();
+        Player player = event.getEntity();
         
         if(player.getAttackStrengthScale(0)< CraftConfig.TIPPED_COOLDOWN.get())
         	return;
@@ -199,6 +208,53 @@ public class ServerEvents {
 			livingEntity.addEffect(e);
 	}
 
+	//used to check if glove has arrows for bow to use
+	@SubscribeEvent
+	public static void onArrowNock(ArrowNockEvent event) {
+		if(!event.getEntity().level.isClientSide)
+			System.out.println(event.getBow());
+		
+		/*if(!entity.getLevel().isClientSide && entity instanceof Player) {
+			InteractionHand usedHand = event.getHand() == InteractionHand.OFF_HAND? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
+			ItemStack itemstack = entity.getItemInHand(usedHand);
+			if(itemstack.getItem() instanceof GloveItem) {
+				
+			}
+		}*/
+	}
+
+	//used to reduce arrows in glove if needed
+	@SubscribeEvent
+	public static void onArrowLoose(ArrowLooseEvent event) {
+	}
+	
+	//used to reduce arrows in glove if needed
+	@SubscribeEvent
+	public static void onGetProjectile(LivingGetProjectileEvent event) {
+		LivingEntity entity = event.getEntity();
+		System.out.println(event.getProjectileItemStack());
+
+		
+		if( entity instanceof Player){
+			//InteractionHand usedHand = event.getHand() == InteractionHand.OFF_HAND? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
+			//ItemStack itemstack = entity.getItemInHand(usedHand);
+			//if(itemstack.getItem() instanceof GloveItem) 
+			ItemStack itemstack = null;
+			if(entity.getItemInHand(InteractionHand.MAIN_HAND).getItem() instanceof GloveItem)
+				itemstack = entity.getItemInHand(InteractionHand.MAIN_HAND);
+			else if(entity.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof GloveItem)
+				itemstack = entity.getItemInHand(InteractionHand.OFF_HAND);
+			if(itemstack == null) return;
+			ItemStack ammo = ((GloveItem)itemstack.getItem()).getHighlightedItem(itemstack);
+			if(ammo.getItem() instanceof ArrowItem) {
+				event.setProjectileItemStack(ammo);
+
+				/*if( event.getProjectileWeaponItemStack().getItem() instanceof CrossbowItem) {
+					CrossbowItem item = (CrossbowItem)event.getProjectileWeaponItemStack().getItem();
+					item.isCharged(null)*/
+			}
+		}
+	}
 	
 	@SubscribeEvent
 	public static void AttachCapabilities(final AttachCapabilitiesEvent<Entity> event) {

@@ -1,6 +1,6 @@
 
 modLoader="javafml" 
-loaderVersion="[41,)" 
+loaderVersion="[42,)" 
 license="All rights reserved"
 
 [[mods]]
@@ -14,13 +14,13 @@ description='''A bunch of new potions, two new potion bottles and a new potion b
 [[dependencies.potsnstuff]]
      modId="forge"
      mandatory=true 
-    versionRange="[41,)" 
+    versionRange="[42,)" 
     ordering="NONE"
     side="BOTH"
     
 [[dependencies.potsnstuff]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.9,1.20)"
+    versionRange="[1.9.1,1.20)"
     ordering="NONE"
     side="BOTH"

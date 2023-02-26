@@ -3,7 +3,7 @@ package net.usernaem.potsnstuff.common.datagen;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.usernaem.potsnstuff.PotsNStuff;
 
 @Mod.EventBusSubscriber(modid = PotsNStuff.MOD_ID_STRING, bus = Mod.EventBusSubscriber.Bus.MOD)

@@ -10,7 +10,7 @@ import net.usernaem.potsnstuff.common.blocks.entity.PotionBagBlockEntity;
 public class BlockEntityInit {
 
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister
-            .create(ForgeRegistries.BLOCK_ENTITIES, PotsNStuff.MOD_ID_STRING);
+            .create(ForgeRegistries.BLOCK_ENTITY_TYPES, PotsNStuff.MOD_ID_STRING);
     
     public static final RegistryObject<BlockEntityType<PotionBagBlockEntity>> POTION_BAG_ENTITY = BLOCK_ENTITIES
             .register("potion_bag_block", () -> BlockEntityType.Builder
