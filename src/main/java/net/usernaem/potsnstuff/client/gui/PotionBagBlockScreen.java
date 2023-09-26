@@ -43,7 +43,7 @@ public class PotionBagBlockScreen extends AbstractContainerScreen<PotionBagBlock
         RenderSystem.setShaderTexture(0, TEXTURE);
         int posX = (this.width - this.getXSize()) / 2;
         int posY = (this.height - this.getYSize()) / 2;
-        blit(stack, posX, posY, 0, 0, this.getXSize(), this.inventoryRows * 18 + 17);
-        blit(stack, posX, posY + this.inventoryRows * 18 + 17, 0, 126, this.getXSize(), 96);
+        blit(stack, posX, posY, 0, 0, this.getXSize(), 166);
+        //blit(stack, posX, posY + this.inventoryRows * 18 + 17, 0, 126, this.getXSize(), 96);
     }
 }

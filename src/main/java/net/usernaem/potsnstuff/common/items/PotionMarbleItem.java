@@ -36,7 +36,7 @@ public class PotionMarbleItem extends ThrowablePotionItem{
 	      if (!p_77659_1_.isClientSide) {
 	         ThrownPotion potionentity = new ThrownPotion(p_77659_1_, p_77659_2_);
 	         potionentity.setItem(itemstack);
-	         potionentity.shootFromRotation(p_77659_2_, p_77659_2_.getXRot(), p_77659_2_.getYRot(), 0.0F, 2.0F, 1.0F);
+	         potionentity.shootFromRotation(p_77659_2_, p_77659_2_.getXRot(), p_77659_2_.getYRot(), this.getPitch(), this.getSpeed(), 1.0F);
 	         p_77659_1_.addFreshEntity(potionentity);
 	      }
 
@@ -48,6 +48,13 @@ public class PotionMarbleItem extends ThrowablePotionItem{
 	      return InteractionResultHolder.sidedSuccess(itemstack, p_77659_1_.isClientSide());
 	   }
 	
+	public float getPitch() {
+		return 0.0f;
+	}
+
+	public float getSpeed() {
+		return 2.0f;
+	}
 	   @Override
 		public Component getName(ItemStack p_200295_1_) {
 			  return Component.translatable(getDescriptionId(), Component.translatable(PotionUtils.getPotion(p_200295_1_).getName("item.minecraft.potion.effect.")));

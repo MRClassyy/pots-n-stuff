@@ -11,7 +11,7 @@ import net.usernaem.potsnstuff.PotsNStuff;
 import net.usernaem.potsnstuff.common.containers.GloveContainer;
 
 public class GloveContainerScreen  extends AbstractContainerScreen<GloveContainer>{
-	private static final ResourceLocation TEXTURE = new ResourceLocation(PotsNStuff.MOD_ID_STRING, "textures/gui/potion_bag.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(PotsNStuff.MOD_ID_STRING, "textures/gui/potion_bag_glove.png");
 
     private final int inventoryRows;
     
@@ -40,8 +40,10 @@ public class GloveContainerScreen  extends AbstractContainerScreen<GloveContaine
 	        RenderSystem.setShaderTexture(0, TEXTURE);
 	        int posX = (this.width - this.getXSize()) / 2;
 	        int posY = (this.height - this.getYSize()) / 2;
-	        blit(stack, posX, posY, 0, 0, this.getXSize(), this.inventoryRows * 18 + 17);
-	        blit(stack, posX, posY + this.inventoryRows * 18 + 17, 0, 126, this.getXSize(), 96);
+	        blit(stack, posX, posY, 0, 0, this.getXSize(), 167); //XY on screen, XY on png, width and height
+	        
+	        blit(stack, posX + 176, posY, 176, 0, this.inventoryRows * 18 + 5, 101);
+	        blit(stack, posX + 181 + this.inventoryRows * 18, posY, 217, 0, 7, 101);
 	    }
 
 

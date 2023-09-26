@@ -42,7 +42,9 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.NetworkHooks;
 import net.usernaem.potsnstuff.common.blocks.entity.PotionBagBlockEntity;
+import net.usernaem.potsnstuff.common.containers.GloveBagBlockContainer;
 import net.usernaem.potsnstuff.common.containers.PotionBagBlockContainer;
+import net.usernaem.potsnstuff.common.items.GloveItem;
 import net.usernaem.potsnstuff.common.items.PotionBagItem;
 import net.usernaem.potsnstuff.core.enums.blockStates.AttachFloorWall;
 import net.usernaem.potsnstuff.core.init.BlockInit;
@@ -167,12 +169,26 @@ public class PotionBagBlock extends Block implements EntityBlock{
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
 
 		if(!level.isClientSide && level.getBlockEntity(pos) instanceof final PotionBagBlockEntity bag) {
-			final MenuProvider container = new SimpleMenuProvider(PotionBagBlockContainer.getServerContainer(bag, pos), PotionBagBlockEntity.TITLE); 
+			MenuProvider container;
+			if(hasGloveInHand(player))
+				 container = new SimpleMenuProvider(GloveBagBlockContainer.getServerContainer(bag, pos), PotionBagBlockEntity.TITLE);
+			else
+				 container = new SimpleMenuProvider(PotionBagBlockContainer.getServerContainer(bag, pos), PotionBagBlockEntity.TITLE); 
 			NetworkHooks.openScreen((ServerPlayer)player, container, pos);
 		}
 		
 		return InteractionResult.SUCCESS;
 	}
+	
+	private boolean hasGloveInHand(Player player) {
+		if(player.getMainHandItem().getItem() instanceof GloveItem)
+			return true;
+		if(player.getOffhandItem().getItem() instanceof GloveItem)
+			return true;
+		
+		return false;
+	}
+	
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
 		return new PotionBagBlockEntity(pos, state);

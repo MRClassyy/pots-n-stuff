@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.stringtemplate.v4.compiler.STParser.ifstat_return;
+
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -211,8 +213,9 @@ public class ServerEvents {
 	//used to check if glove has arrows for bow to use
 	@SubscribeEvent
 	public static void onArrowNock(ArrowNockEvent event) {
-		if(!event.getEntity().level.isClientSide)
+		if(!event.getEntity().level.isClientSide){
 			System.out.println(event.getBow());
+		}
 		
 		/*if(!entity.getLevel().isClientSide && entity instanceof Player) {
 			InteractionHand usedHand = event.getHand() == InteractionHand.OFF_HAND? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
@@ -224,8 +227,11 @@ public class ServerEvents {
 	}
 
 	//used to reduce arrows in glove if needed
+	@SuppressWarnings("resource")
 	@SubscribeEvent
 	public static void onArrowLoose(ArrowLooseEvent event) {
+		if(!event.getEntity().getLevel().isClientSide)
+			System.out.println(event.getBow());
 	}
 	
 	//used to reduce arrows in glove if needed

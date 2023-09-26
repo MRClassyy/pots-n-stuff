@@ -382,6 +382,9 @@
 	"item.potsnstuff.marble_empty": "Empty Marble",
 	"item.potsnstuff.diamond_nugget": "Diamond Shard",
 	"item.potsnstuff.potion_vial": "Stackable %s",
-	"item.potsnstuff.potion_marble": "Throwable %s"
+	"item.potsnstuff.potion_marble": "Throwable %s",
+	
+	"key.category.potsnstuff.keymap": "Pots n Stuff",
+	"key.potsnstuff.open_glove": "Open Glove Menu"
 }
 	

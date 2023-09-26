@@ -11293,17 +11293,14 @@ ahb net/minecraft/server/network/ServerLoginPacketListenerImpl
 	c f_10015_
 	d f_143698_
 	e f_10016_
-	f f_215252_
-	g f_215253_
-	h f_215254_
-	i f_10017_
-	j f_10018_
-	k f_10019_
-	l f_10020_
-	m f_10021_
-	n f_10022_
-	o f_10024_
-	p f_240234_
+	f f_10017_
+	g f_10018_
+	h f_10019_
+	i f_10020_
+	j f_10021_
+	k f_10022_
+	l f_10024_
+	m f_240234_
 	<clinit> ()V <clinit>
 		static
 	<init> (Lnet/minecraft/server/MinecraftServer;Lqv;)V <init>
@@ -11349,13 +11346,7 @@ ahb$1 net/minecraft/server/network/ServerLoginPacketListenerImpl$1
 		2 o p_10063_
 	a ()Ljava/net/InetAddress; m_10064_
 	run ()V run
-ahb$a net/minecraft/server/network/ServerLoginPacketListenerImpl$PublicKeyValidationException
-	<init> (Lrq;Ljava/lang/Throwable;)V <init>
-		0 o p_240257_
-		1 o p_240258_
-	<init> (Lrq;)V <init>
-		0 o p_240282_
-ahb$b net/minecraft/server/network/ServerLoginPacketListenerImpl$State
+ahb$a net/minecraft/server/network/ServerLoginPacketListenerImpl$State
 	a HELLO
 	b KEY
 	c AUTHENTICATING
@@ -11369,12 +11360,12 @@ ahb$b net/minecraft/server/network/ServerLoginPacketListenerImpl$State
 	<init> (Ljava/lang/String;I)V <init>
 		0 o p_10076_
 		1 o p_10077_
-	a ()[Lahb$b; m_143701_
+	a ()[Lahb$a; m_143701_
 		static
-	valueOf (Ljava/lang/String;)Lahb$b; valueOf
+	valueOf (Ljava/lang/String;)Lahb$a; valueOf
 		static
 		0 o p_10079_
-	values ()[Lahb$b; values
+	values ()[Lahb$a; values
 		static
 ahc net/minecraft/server/network/ServerPlayerConnection
 	a (Ltc;)V m_9829_
@@ -19756,9 +19747,9 @@ aok net/minecraft/util/datafix/fixes/BlockRenameFixWithJigsaw
 	a (Lcom/mojang/serialization/Dynamic;Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic; m_145160_
 		0 o p_145161_
 		1 o p_145162_
-	a (Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic; m_145146_
+	a (Lcom/mojang/serialization/Dynamic;)Lcom/mojang/serialization/Dynamic; m_145158_
 		0 o p_145159_
-	a (Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed; m_14912_
+	a (Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed; m_145156_
 		0 o p_145157_
 	a (Lcom/mojang/datafixers/OpticFinder;Lcom/mojang/datafixers/DSL$TypeReference;Lcom/mojang/datafixers/Typed;)Lcom/mojang/datafixers/Typed; m_145152_
 		0 o p_145153_
@@ -36838,10 +36829,10 @@ bht net/minecraft/world/entity/ai/control/SmoothSwimmingLookControl
 	<init> (Lbce;I)V <init>
 		0 o p_148061_
 		1 o p_148062_
-	a (Ljava/lang/Float;)V m_242548_
+	a (Ljava/lang/Float;)V m_242549_
 		0 o p_181132_
 	a ()V m_8128_
-	b (Ljava/lang/Float;)V m_181129_
+	b (Ljava/lang/Float;)V m_181133_
 		0 o p_181134_
 bhu net/minecraft/world/entity/ai/control/SmoothSwimmingMoveControl
 	l f_148064_
@@ -43447,7 +43438,7 @@ bof net/minecraft/world/entity/animal/Turtle
 		0 o p_30224_
 	k (Lbcc;)Z m_242560_
 		static
-		0 o p_30266_
+		0 o p_30226_
 	n (Lcax;)Z m_6898_
 		0 o p_30231_
 	n ()V m_30232_
@@ -45888,7 +45879,7 @@ bqj net/minecraft/world/entity/boss/wither/WitherBoss
 		0 o p_31437_
 		1 o p_31438_
 	T ()V m_8024_
-	a (FFF)F m_21376_
+	a (FFF)F m_31442_
 		0 o p_31443_
 		1 o p_31444_
 		2 o p_31445_
@@ -52471,25 +52462,24 @@ bue net/minecraft/world/entity/player/ProfileKeyPair
 	hashCode ()I hashCode
 	toString ()Ljava/lang/String; toString
 buf net/minecraft/world/entity/player/ProfilePublicKey
-	a f_219780_
-	b f_219781_
+	a f_243347_
+	b f_243346_
+	c f_243350_
+	d f_219780_
+	e f_219781_
+	f f_243345_
 	<clinit> ()V <clinit>
 		static
 	<init> (Lbuf$a;)V <init>
 		0 o f_219781_
-	a (Lamp;Ljava/util/UUID;Lbuf$a;)Lbuf; m_219786_
+	a (Lamp;Ljava/util/UUID;Lbuf$a;Ljava/time/Duration;)Lbuf; m_243358_
 		static
-		0 o p_219787_
-		1 o p_240251_
-		2 o p_240252_
-	a (Lbuf$a;)Lbuf; m_219789_
-		static
-		0 o p_219790_
+		0 o p_243373_
+		1 o p_243390_
+		2 o p_243374_
+		3 o p_243387_
 	a ()Lamp; m_219785_
 	b ()Lbuf$a; f_219781_
-	b (Lbuf$a;)Lcom/mojang/serialization/DataResult; m_219792_
-		static
-		0 o p_219793_
 	equals (Ljava/lang/Object;)Z equals
 		0 o p_219795_
 	hashCode ()I hashCode
@@ -52508,6 +52498,8 @@ buf$a net/minecraft/world/entity/player/ProfilePublicKey$Data
 		0 o f_219799_
 		1 o f_219800_
 		2 o f_219801_
+	a (Ljava/time/Duration;)Z m_243357_
+		0 o p_243376_
 	a (Lamp;Ljava/util/UUID;)Z m_240295_
 		0 o p_240296_
 		1 o p_240297_
@@ -52526,6 +52518,9 @@ buf$a net/minecraft/world/entity/player/ProfilePublicKey$Data
 		0 o p_219822_
 	hashCode ()I hashCode
 	toString ()Ljava/lang/String; toString
+buf$b net/minecraft/world/entity/player/ProfilePublicKey$ValidationException
+	<init> (Lrq;)V <init>
+		0 o p_243378_
 bug net/minecraft/world/entity/player/StackedContents
 	a f_36451_
 	b f_150116_
@@ -81599,7 +81594,7 @@ cqq net/minecraft/world/level/block/SmithingTableBlock
 		static
 	<init> (Lcvn$c;)V <init>
 		0 o p_56420_
-	a (Lcgx;Lgt;ILbub;Lbuc;)Lbwm; m_52226_
+	a (Lcgx;Lgt;ILbub;Lbuc;)Lbwm; m_56421_
 		static
 		0 o p_56422_
 		1 o p_56423_
@@ -101306,7 +101301,7 @@ dhf net/minecraft/world/level/levelgen/feature/foliageplacers/BushFoliagePlacer
 		3 o p_225533_
 		4 o p_225534_
 		5 o p_225535_
-	c (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; m_68426_
+	c (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; m_68453_
 		static
 		0 o p_68454_
 dhg net/minecraft/world/level/levelgen/feature/foliageplacers/DarkOakFoliagePlacer
@@ -101374,7 +101369,7 @@ dhh net/minecraft/world/level/levelgen/feature/foliageplacers/FancyFoliagePlacer
 		3 o p_225578_
 		4 o p_225579_
 		5 o p_225580_
-	c (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; m_68426_
+	c (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; m_68517_
 		static
 		0 o p_68518_
 dhi net/minecraft/world/level/levelgen/feature/foliageplacers/FoliagePlacer
@@ -102569,7 +102564,7 @@ diw net/minecraft/world/level/levelgen/feature/trunkplacers/MegaJungleTrunkPlace
 		4 o p_226144_
 		5 o p_226145_
 	a ()Ldiz; m_7362_
-	b (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; m_70188_
+	b (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; m_70205_
 		static
 		0 o p_70206_
 dix net/minecraft/world/level/levelgen/feature/trunkplacers/StraightTrunkPlacer
@@ -105950,7 +105945,7 @@ dmh net/minecraft/world/level/levelgen/structure/pools/SinglePoolElement
 		1 o p_227321_
 		2 o p_227322_
 		3 o p_227323_
-	a (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; m_210356_
+	a (Lcom/mojang/serialization/codecs/RecordCodecBuilder$Instance;)Lcom/mojang/datafixers/kinds/App; m_210428_
 		static
 		0 o p_210429_
 	a (Ldmh;)Lcom/mojang/datafixers/util/Either; m_210430_
@@ -132339,7 +132334,7 @@ eha net/minecraft/client/gui/Font
 		0 o p_92853_
 	a (ILsj;)F m_243025_
 		0 o p_92722_
-		1 o p_92722_
+		1 o p_92723_
 	a ()Z m_92718_
 	a (Labb;)Lejf; m_92863_
 		0 o p_92864_
@@ -136838,12 +136833,14 @@ ekj net/minecraft/client/gui/screens/ConnectScreen
 ekj$1 net/minecraft/client/gui/screens/ConnectScreen$1
 	a f_169272_
 	b f_169273_
-	c f_95729_
-	<init> (Lekj;Ljava/lang/String;Levz;Lefu;)V <init>
-		0 o p_169275_
-		1 o p_169276_
-		2 o p_169277_
-		3 o p_169278_
+	c f_243344_
+	d f_95729_
+	<init> (Lekj;Ljava/lang/String;Levz;Lefu;Ljava/util/concurrent/CompletableFuture;)V <init>
+		0 o p_243385_
+		1 o p_243392_
+		2 o p_243375_
+		3 o p_243389_
+		4 o p_243381_
 	a (Lefu;)V m_169279_
 		0 o p_169280_
 	a (Lefu;Ljava/lang/String;)V m_169281_
@@ -143347,7 +143344,7 @@ epi net/minecraft/client/gui/screens/social/SocialInteractionsPlayerList
 		1 o p_100716_
 	a (Lepg;)Z m_240241_
 		0 o p_100710_
-	b (Lepg;)Ljava/lang/Integer; m_240682_
+	b (Lepg;)Ljava/lang/Integer; m_243352_
 		static
 		0 o p_240745_
 	c (Lepg;)Ljava/lang/Integer; m_240681_
@@ -149789,44 +149786,64 @@ ev net/minecraft/commands/arguments/SlotArgument
 eva net/minecraft/client/multiplayer/ProfileKeyPairManager
 	a f_233765_
 	b f_233766_
-	c f_233767_
-	d f_233768_
-	e f_233769_
+	c f_243348_
+	d f_233767_
+	e f_243342_
 	<clinit> ()V <clinit>
 		static
 	<init> (Lcom/mojang/authlib/minecraft/UserApiService;Ljava/util/UUID;Ljava/nio/file/Path;)V <init>
 		0 o p_233772_
 		1 o p_233773_
 		2 o p_233774_
+	a (Leva$a;)Lbuf; m_243355_
+		static
+		0 o p_243372_
+	a ()Ljava/util/concurrent/CompletableFuture; m_243369_
 	a (Lbue;)V m_233776_
 		0 o p_233777_
 	a (Lcom/mojang/authlib/yggdrasil/response/KeyPairResponse;)Lbuf$a; m_233782_
 		static
 		0 o p_233783_
-	a (Lcom/mojang/authlib/minecraft/UserApiService;)Ljava/util/concurrent/CompletableFuture; m_233780_
-		0 o p_233781_
-	a (Ljava/util/Optional;)Ljava/util/Optional; m_233784_
-		static
-		0 o p_233785_
+	a (Lcom/mojang/authlib/minecraft/UserApiService;)Lbue; m_233789_
+		0 o p_233790_
+	a (Ljava/util/Optional;)Ljava/util/concurrent/CompletableFuture; m_243398_
+		0 o p_243401_
 	a (Lcom/google/gson/JsonElement;)V m_233778_
 		0 o p_233779_
-	a ()Lamq; m_233775_
-	b ()Ljava/util/Optional; m_233786_
-	b (Lcom/mojang/authlib/minecraft/UserApiService;)Lbue; m_233789_
-		0 o p_233790_
+	b ()Lamq; m_233775_
+	b (Leva$a;)Lbuf$a; m_243353_
+		static
+		0 o p_243371_
 	b (Lbue;)Z m_233787_
 		static
 		0 o p_233788_
-	b (Ljava/util/Optional;)Ljava/util/Optional; m_233791_
+	b (Ljava/util/Optional;)Ljava/util/Optional; m_233784_
+		static
+		0 o p_233785_
+	c (Ljava/util/Optional;)Ljava/util/Optional; m_243396_
+		0 o p_243399_
+	c ()Ljava/util/Optional; m_233786_
+	d ()Ljava/util/Optional; m_233798_
+	d (Ljava/util/Optional;)Ljava/util/Optional; m_233791_
 		static
 		0 o p_233792_
-	c (Lcom/mojang/authlib/minecraft/UserApiService;)Ljava/util/Optional; m_242508_
-		0 o p_242690_
-	c (Lbue;)Lamq; m_233794_
-		static
-		0 o p_233795_
-	c ()Ljava/util/Optional; m_233793_
-	d ()Ljava/util/Optional; m_233798_
+	e (Ljava/util/Optional;)Ljava/util/concurrent/CompletionStage; m_243397_
+		0 o p_243400_
+	e ()Ljava/util/Optional; m_243395_
+eva$a net/minecraft/client/multiplayer/ProfileKeyPairManager$Result
+	a f_243349_
+	b f_243351_
+	<init> (Lbue;)V <init>
+		0 o p_243382_
+	<init> (Lbue;Lamq;)V <init>
+		0 o f_243349_
+		1 o f_243351_
+	a ()Lbue; f_243349_
+	b ()Lamq; f_243351_
+	equals (Ljava/lang/Object;)Z equals
+		0 o p_243377_
+	hashCode ()I hashCode
+	toString ()Ljava/lang/String; toString
 evb net/minecraft/client/multiplayer/ServerData
 	a f_105362_
 	b f_105363_
@@ -170162,15 +170179,17 @@ fop$1 net/minecraft/realms/RealmsConnect$1
 	a f_120710_
 	b f_120711_
 	c f_120712_
-	d f_120713_
-	e f_120714_
-	<init> (Lfop;Ljava/lang/String;Ljava/lang/String;ILefu;Lebv;)V <init>
-		0 o p_120716_
-		1 o p_120717_
-		2 o p_120718_
-		3 o p_120719_
-		4 o p_120720_
-		5 o p_120721_
+	d f_243343_
+	e f_120713_
+	f f_120714_
+	<init> (Lfop;Ljava/lang/String;Ljava/lang/String;ILefu;Ljava/util/concurrent/CompletableFuture;Lebv;)V <init>
+		0 o p_243391_
+		1 o p_243393_
+		2 o p_243394_
+		3 o p_243383_
+		4 o p_243380_
+		5 o p_243386_
+		6 o p_243384_
 	a (Lefu;Lfoo;)V m_120727_
 		static
 		0 o p_120728_
@@ -174269,7 +174288,7 @@ hs net/minecraft/core/Vec3i
 	a (Lhs;)Ljava/util/stream/IntStream; m_123312_
 		static
 		0 o p_123313_
-	a (Ljava/util/stream/IntStream;)Lcom/mojang/serialization/DataResult; m_121966_
+	a (Ljava/util/stream/IntStream;)Lcom/mojang/serialization/DataResult; m_123317_
 		static
 		0 o p_123318_
 	a (Lhs;D)Z m_123314_

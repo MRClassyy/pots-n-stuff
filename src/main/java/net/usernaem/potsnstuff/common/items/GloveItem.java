@@ -5,13 +5,14 @@ import java.util.Random;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import com.mojang.math.Quaternion;
+import com.mojang.math.Vector3f;
 
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -24,11 +25,9 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PotionItem;
 import net.minecraft.world.item.ThrowablePotionItem;
 import net.minecraft.world.item.Tier;
@@ -40,12 +39,10 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.usernaem.potsnstuff.common.containers.GloveContainer;
-import net.usernaem.potsnstuff.common.containers.PotionBagContainer;
-import net.usernaem.potsnstuff.core.init.ItemInit;
 
 public class GloveItem extends TieredItem{
 	public static final String INVENTORY_KEY = "inventory";
@@ -64,14 +61,14 @@ public class GloveItem extends TieredItem{
 	    this.defaultModifiers = builder.build();
 	}  
 	
-	public int getInventorySize(ItemStack stack) {
+	public int getInventorySize() {
 		return numOfSlots;
 	}
 	
 	public IItemHandler getInventory(ItemStack stack) {
     	if(stack.isEmpty())
     		return null;    	
-    	ItemStackHandler stackHandler = new ItemStackHandler(getInventorySize(stack));
+    	ItemStackHandler stackHandler = new ItemStackHandler(getInventorySize());
     	stackHandler.deserializeNBT(stack.getOrCreateTag().getCompound(INVENTORY_KEY));
     	 return stackHandler;
     }
@@ -103,7 +100,7 @@ public class GloveItem extends TieredItem{
 	
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		if(this.isEnchantable(stack) && this.allowedEnchantment(enchantment))
+		if(this.canBeEnchanted(stack) && this.allowedEnchantment(enchantment))
 			return allowedEnchantment(enchantment);
 		return false;
 	}
@@ -111,20 +108,24 @@ public class GloveItem extends TieredItem{
 	//check if book given has only allowed enchantments
 	@Override
 	public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
-		if(!this.isEnchantable(stack))
-			return false;
+		if(!this.canBeEnchanted(stack))
+			return false; 
 		Map<Enchantment, Integer> map = EnchantmentHelper.getEnchantments(book);
 		for(Enchantment enchantment : map.keySet()) {
-			if(!allowedEnchantment(enchantment))
-				return false;
+			if(allowedEnchantment(enchantment))
+				return true;
 		}
-		return true;
+		return false;
+	}
+
+	public boolean canBeEnchanted(ItemStack p_41456_) {
+		if(this.getTier() == Tiers.NETHERITE)
+			return true;
+		return false;
 	}
 	
 	@Override
 	public boolean isEnchantable(ItemStack p_41456_) {
-		if(this.getTier() == Tiers.NETHERITE)
-			return true;
 		return false;
 	}
 	
@@ -133,7 +134,7 @@ public class GloveItem extends TieredItem{
 			return true;
 		if(enchantment == Enchantments.MULTISHOT)
 			return true;
-			return false;
+		return false;
 
 	}
 	
@@ -158,16 +159,37 @@ public class GloveItem extends TieredItem{
 
 	        		return new InteractionResultHolder<>(InteractionResult.SUCCESS, player.getItemInHand(handIn));
 	        	}else {  
-	      	      	if(player.getCooldowns().isOnCooldown(itemstack.getItem()))
+	                InteractionHand offHand = handIn == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND; 
+	                Item offHandItem = player.getItemInHand(offHand).getItem();
+	      	      	if(player.getCooldowns().isOnCooldown(itemstack.getItem()) || offHandItem instanceof PotionBagItem)
 	      	      		return InteractionResultHolder.fail(player.getItemInHand(handIn));
 	      	      	
    	    	 		if(itemstack.getItem() instanceof ThrowablePotionItem) {
-   	    			  Random random = new Random();
-   	    			  level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.SPLASH_POTION_THROW, SoundSource.PLAYERS, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
+   	    	 			Random random = new Random();
+   	    			  	level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.SPLASH_POTION_THROW, SoundSource.PLAYERS, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
+   	    			  	Vec3 vec31 = player.getUpVector(1.0F);
+   	    			  	Vec3 vec3 = player.getViewVector(1.0F);
+			   	        float pitch = -20.0f;
+			   	        float speed = 0.5f;
+			   	        if(itemstack.getItem() instanceof PotionMarbleItem) {
+			   	        	pitch = ((PotionMarbleItem) itemstack.getItem()).getPitch();
+			   	        	speed = ((PotionMarbleItem) itemstack.getItem()).getSpeed();
+			   	        	
+			   	        }
 		   	    	 	for(i = 0; i< j; i++) {
 					   	        ThrownPotion potionentity = new ThrownPotion(level, player);
 					   	        potionentity.setItem(itemstack);
-					   	        potionentity.shootFromRotation(player, player.getXRot(), player.getYRot() + j, 0.0F, 2.0F, 1.0f);
+					   	        //potionentity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.0F, 1.0F);
+					   	        float f = 0; 
+					   	        if(i == 1)
+					   	        	f = -10.0f;
+					   	        if( i == 2)
+					   	        	f = 10.0f;
+		   	   	              	Vector3f vector3f = new Vector3f(vec3);
+				   	            Quaternion quaternion = new Quaternion(new Vector3f(vec31), f, true);
+				   	            vector3f.transform(quaternion);
+				   	            vector3f.setY(-Mth.sin((player.getXRot() + pitch) * ((float)Math.PI / 180F)));
+				   	            potionentity.shoot((double)vector3f.x(), (double)vector3f.y(), (double)vector3f.z(), speed , 1.0f);
 					   	        level.addFreshEntity(potionentity);
 		   	    	 		}
 			   	        if(!player.getAbilities().instabuild) {
@@ -201,7 +223,6 @@ public class GloveItem extends TieredItem{
 	   public ItemStack finishUsingItem(ItemStack iStack, Level level, LivingEntity livingEntity) {
 		      Player playerentity = livingEntity instanceof Player ? (Player)livingEntity : null;
 		      ItemStack itemstack = this.getHighlightedItem(iStack);
-		      System.out.println(itemstack.getItem());
 		      /*if (playerentity instanceof ServerPlayer) {
 		         CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer)playerentity, itemStack);
 		      }*/

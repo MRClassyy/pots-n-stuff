@@ -28,9 +28,9 @@ public class ItemInit {
 	
 	public static final RegistryObject<PotionBagItem> POTBAG_OBJECT = ITEMS.register("potion_bag", () -> new PotionBagItem());
 
-	public static final RegistryObject<GloveItem> IRONGLOVE_OBJECT = ITEMS.register("iron_glove", () -> new GloveItem(Tiers.IRON, 3, 4,(new Item.Properties()).tab(CreativeModeTab.TAB_MISC)));
+	public static final RegistryObject<GloveItem> IRONGLOVE_OBJECT = ITEMS.register("iron_glove", () -> new GloveItem(Tiers.IRON, 3, 4,(new Item.Properties().setNoRepair()).tab(CreativeModeTab.TAB_MISC)));
 
-	public static final RegistryObject<GloveItem> DIAMONDGLOVE_OBJECT = ITEMS.register("diamond_glove", () -> new GloveItem(Tiers.DIAMOND, 3, 8, (new Item.Properties()).tab(CreativeModeTab.TAB_MISC)));
+	public static final RegistryObject<GloveItem> DIAMONDGLOVE_OBJECT = ITEMS.register("diamond_glove", () -> new GloveItem(Tiers.DIAMOND, 3, 8, (new Item.Properties().setNoRepair()).tab(CreativeModeTab.TAB_MISC)));
 	
-	public static final RegistryObject<GloveItem> NETHERITEGLOVE_OBJECT = ITEMS.register("netherite_glove", () -> new GloveItem(Tiers.NETHERITE, 3, 8, (new Item.Properties()).tab(CreativeModeTab.TAB_MISC).fireResistant()));
+	public static final RegistryObject<GloveItem> NETHERITEGLOVE_OBJECT = ITEMS.register("netherite_glove", () -> new GloveItem(Tiers.NETHERITE, 3, 8, (new Item.Properties().setNoRepair()).tab(CreativeModeTab.TAB_MISC).fireResistant()));
 }

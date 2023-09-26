@@ -9,12 +9,14 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.usernaem.potsnstuff.PotsNStuff;
 import net.usernaem.potsnstuff.client.util.ClientUtils;
+import net.usernaem.potsnstuff.client.util.KeyBinding;
 import net.usernaem.potsnstuff.common.items.crafting.TippedWeaponRecipe;
 import net.usernaem.potsnstuff.core.config.CraftConfig;
 
@@ -48,4 +50,11 @@ public class ClientEventBusSubscriberForge {
 		int realtime = i.getDuration() / 80;
 		return " (" + (realtime / 60) + ":" + String.format("%02d",realtime % 60) + ")";
 	}
+	
+    @SubscribeEvent
+    public static void onKeyInput(InputEvent.Key event) {
+        if(KeyBinding.GLOVE_KEY.consumeClick()) {
+        	//TODO: add glove opening
+        }
+    }
 }

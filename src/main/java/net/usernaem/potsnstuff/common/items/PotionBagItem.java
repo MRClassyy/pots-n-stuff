@@ -4,6 +4,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
@@ -25,6 +26,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.usernaem.potsnstuff.common.containers.GloveBagContainer;
 import net.usernaem.potsnstuff.common.containers.PotionBagContainer;
 import net.usernaem.potsnstuff.core.init.BlockInit;
 
@@ -57,7 +59,7 @@ public class PotionBagItem extends BlockItem{
     public InteractionResult useOn(UseOnContext context) {
     	Player player = context.getPlayer();
     	Level level = context.getLevel();
-    	if(!level.isClientSide && player.isCrouching()) {
+    	if(!level.isClientSide && player.isCrouching() && !hasGloveInHand(player, context.getHand())) {
 	    	return super.useOn(context);
     	}
 	    return InteractionResult.PASS;
@@ -67,14 +69,28 @@ public class PotionBagItem extends BlockItem{
     @Override
     public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn) {
         if (!worldIn.isClientSide) {
-        	if(!playerIn.isCrouching()) {
-        	      	playerIn.openMenu(new SimpleMenuProvider(
-                    (id, playerInventory, player) -> new PotionBagContainer(id, playerInventory),
-                    Component.translatable("container.potsnstuff.potion_bag")
-            ));
+        	if(!playerIn.isCrouching() && !playerIn.isUsingItem()) {
+	                if(hasGloveInHand(playerIn, handIn)) {
+	        	      	playerIn.openMenu(new SimpleMenuProvider(
+	                            (id, playerInventory, player) -> new GloveBagContainer(id, playerInventory),
+	                            Component.translatable("container.potsnstuff.potion_bag")
+	                	      			));
+	                }else {
+	        	      	playerIn.openMenu(new SimpleMenuProvider(
+	                            (id, playerInventory, player) -> new PotionBagContainer(id, playerInventory),
+	                            Component.translatable("container.potsnstuff.potion_bag")
+	                	      			));
+	                }
+	                return new InteractionResultHolder<>(InteractionResult.SUCCESS, playerIn.getItemInHand(handIn));
         	}
         }
-        return new InteractionResultHolder<>(InteractionResult.SUCCESS, playerIn.getItemInHand(handIn));
+        return new InteractionResultHolder<>(InteractionResult.FAIL, playerIn.getItemInHand(handIn));
+    }
+    
+    private boolean hasGloveInHand(Player playerIn, InteractionHand handIn) {
+    	InteractionHand offHand = handIn == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND; 
+        Item offHandItem = playerIn.getItemInHand(offHand).getItem();
+        return offHandItem instanceof GloveItem;
     }
     
     @Override

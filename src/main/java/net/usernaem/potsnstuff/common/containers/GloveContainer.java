@@ -31,7 +31,7 @@ public class GloveContainer   extends AbstractContainerMenu{
 		 this.item = getHeldItem(playerInventory.player);
 	        this.itemHandler = ((GloveItem) this.item.getItem()).getInventory(this.item);
 	        // Add backpack slots (3 rows of 9)
-	        gloveSlotsSize = ((GloveItem) this.item.getItem()).getInventorySize(item);
+	        gloveSlotsSize = ((GloveItem) this.item.getItem()).getInventorySize();
 	        //potion segment creation
 	        for (int i = 0; i < gloveSlotsSize; ++i) {
 		        int x = 8 + 18 * (i % 4);
