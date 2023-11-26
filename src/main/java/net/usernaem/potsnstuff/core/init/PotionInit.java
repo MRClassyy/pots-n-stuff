@@ -71,7 +71,7 @@ public class PotionInit {
     public static final RegistryObject<Potion> STRONG_STING = POTIONS.register("strong_sting", () -> new Potion(new MobEffectInstance(EffectInit.STING_OBJECT.get(), 600, 1)));
     public static final RegistryObject<Potion> CONVERSION = POTIONS.register("conversion", () -> new Potion(new MobEffectInstance(EffectInit.CONVERT_OBJECT.get(), 300, 0)));
     public static final RegistryObject<Potion> LONG_CONVERSION = POTIONS.register("long_conversion", () -> new Potion(new MobEffectInstance(EffectInit.CONVERT_OBJECT.get(), 600, 0)));
-    public static final RegistryObject<Potion> WAKEUP = POTIONS.register("wake_up", () -> new Potion(new MobEffectInstance(EffectInit.WAKEUP_OBJECT.get(), 1, 0)));
+    public static final RegistryObject<Potion> WAKEUP = POTIONS.register("wake_up", () -> new Potion(new MobEffectInstance(EffectInit.WAKEUP_OBJECT.get(), 100, 0)));
     public static final RegistryObject<Potion> LIGHTFOOT = POTIONS.register("light_foot", () -> new Potion(new MobEffectInstance(EffectInit.LIGHTFOOT_OBJECT.get(), 600, 0)));
     public static final RegistryObject<Potion> LONG_LIGHTFOOT = POTIONS.register("long_light_foot", () -> new Potion(new MobEffectInstance(EffectInit.LIGHTFOOT_OBJECT.get(), 1200, 0)));
     public static final RegistryObject<Potion> DISORIENT = POTIONS.register("disorient", () -> new Potion(new MobEffectInstance(EffectInit.RANDOM_OBJECT.get(), 600, 0)));
@@ -84,7 +84,9 @@ public class PotionInit {
     public static final RegistryObject<Potion> LONG_BLIND = POTIONS.register("long_blind", () -> new Potion(new MobEffectInstance(MobEffects.BLINDNESS, 800, 0)));
     public static final RegistryObject<Potion> DEATHBOUND = POTIONS.register("deathbound", () -> new Potion(new MobEffectInstance(EffectInit.DBOUND_OBJECT.get(), 300, 0)));
     public static final RegistryObject<Potion> LONG_DEATHBOUND = POTIONS.register("long_deathbound", () -> new Potion(new MobEffectInstance(EffectInit.DBOUND_OBJECT.get(), 600, 0)));
-    public static final RegistryObject<Potion> DISARM = POTIONS.register("disarm", () -> new Potion(new MobEffectInstance(EffectInit.DISARM_OBJECT.get(), 1, 0)));
+    public static final RegistryObject<Potion> DISARM = POTIONS.register("disarm", () -> new Potion(new MobEffectInstance(EffectInit.DISARM_OBJECT.get(), 400, 0)));
+    public static final RegistryObject<Potion> LONG_DISARM = POTIONS.register("long_disarm", () -> new Potion(new MobEffectInstance(EffectInit.DISARM_OBJECT.get(), 800, 0)));
+    public static final RegistryObject<Potion> STRONG_DISARM = POTIONS.register("strong_disarm", () -> new Potion(new MobEffectInstance(EffectInit.DISARM_OBJECT.get(), 400, 1)));
     public static final RegistryObject<Potion> CORRODE = POTIONS.register("corrode", () -> new Potion(new MobEffectInstance(EffectInit.ACID_OBJECT.get(), 1, 0)));
     public static final RegistryObject<Potion> STRONG_CORRODE = POTIONS.register("strong_corrode", () -> new Potion(new MobEffectInstance(EffectInit.ACID_OBJECT.get(), 1, 1)));
     
@@ -119,7 +121,7 @@ public class PotionInit {
         PotionRecipeSetup.addPotionRecipes(Potions.AWKWARD, Items.WITHER_ROSE, WITHERING.get(), LONG_WITHERING.get(), STRONG_WITHERING.get());  
         PotionRecipeSetup.addPotionRecipes(Potions.THICK, Items.INK_SAC, BLIND.get(), LONG_BLIND.get(), null);  
         PotionRecipeSetup.addPotionRecipes(DEATHBOUND.get(), Items.FERMENTED_SPIDER_EYE, DEATHBOUND.get(), LONG_DEATHBOUND.get(), null);  
-        PotionRecipeSetup.addPotionRecipes(Potions.THICK, Items.SLIME_BALL, DISARM.get(), null, null); 
+        PotionRecipeSetup.addPotionRecipes(Potions.THICK, Items.SLIME_BALL, DISARM.get(), LONG_DISARM.get(), STRONG_DISARM.get()); 
         PotionRecipeSetup.addPotionRecipes(Potions.THICK, Items.LIME_DYE, CORRODE.get(), null, STRONG_CORRODE.get()); 
     }
 

@@ -3,11 +3,20 @@ package net.usernaem.potsnstuff.common.event;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -21,7 +30,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.world.ExplosionEvent;
+import net.minecraftforge.event.level.ExplosionEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -43,37 +52,41 @@ public class ServerEvents {
 	@SubscribeEvent
     public static void onBeforeDamage(LivingAttackEvent event) {
 		if (event.getSource().isProjectile()) {
-			if(event.getEntityLiving().hasEffect(EffectInit.REFLECT_OBJECT.get())) {
+			if(event.getEntity().hasEffect(EffectInit.REFLECT_OBJECT.get())) {
 	           int percent = EffectConfig.ARROW_RESIST.get();
 	           if(percent == 100)
 	        	   event.setCanceled(true);
 	        }
 	    }else if (event.getSource().isExplosion() || event.getSource().equals(BombEffect.BombDamageSource)) {
-           if(event.getEntityLiving().hasEffect(EffectInit.BLAST_OBJECT.get())) {
+           if(event.getEntity().hasEffect(EffectInit.BLAST_OBJECT.get())) {
         	   int percent = EffectConfig.BLAST_RESIST.get();
         	   if(percent == 100)
         		   event.setCanceled(true);
            }
+        }else if(event.getSource().getDirectEntity() instanceof LivingEntity) {
+        	LivingEntity entity = (LivingEntity) event.getSource().getDirectEntity();
+            shouldDropItem(entity, entity.getMainHandItem());
+        	
         }
     }
 
 	@SubscribeEvent
     public static void onTakenDamage(LivingHurtEvent event) {
-        if(event.getEntityLiving().hasEffect(EffectInit.FRAIL_OBJECT.get())) {
+        if(event.getEntity().hasEffect(EffectInit.FRAIL_OBJECT.get())) {
      	   event.setAmount((float) (event.getAmount() * EffectConfig.FRAIL_MULTIPLY.get()));
         }
 		DamageSource dmgSource = event.getSource();
         if(dmgSource == DamageSource.FALL) {
-        	if(event.getEntityLiving().hasEffect(EffectInit.LIGHTFOOT_OBJECT.get())) {
+        	if(event.getEntity().hasEffect(EffectInit.LIGHTFOOT_OBJECT.get())) {
         		calculateDamage(EffectConfig.FALL_RESIST.get(), event);
         	}
         }
         else if(dmgSource.isExplosion() || dmgSource.equals(BombEffect.BombDamageSource)) {
-           if(event.getEntityLiving().hasEffect(EffectInit.BLAST_OBJECT.get()))
+           if(event.getEntity().hasEffect(EffectInit.BLAST_OBJECT.get()))
         	   calculateDamage(EffectConfig.BLAST_RESIST.get(), event);
         }
         else if(dmgSource.isProjectile()) {
-           if(event.getEntityLiving().hasEffect(EffectInit.REFLECT_OBJECT.get())) {
+           if(event.getEntity().hasEffect(EffectInit.REFLECT_OBJECT.get())) {
         	   calculateDamage(EffectConfig.ARROW_RESIST.get(), event);
            }
         }
@@ -90,17 +103,17 @@ public class ServerEvents {
 	
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public static void ConvertDamageEvent(LivingHurtEvent event) {
-		if(event.getEntityLiving().hasEffect(EffectInit.CONVERT_OBJECT.get()) && !event.getSource().equals(DamageSource.OUT_OF_WORLD) && !event.getSource().equals(ConversionEffect.ConversionDamageSource)) {
-			event.getEntityLiving().setHealth(event.getEntityLiving().getHealth() + event.getAmount());
+		if(event.getEntity().hasEffect(EffectInit.CONVERT_OBJECT.get()) && !event.getSource().equals(DamageSource.OUT_OF_WORLD) && !event.getSource().equals(ConversionEffect.ConversionDamageSource)) {
+			event.getEntity().setHealth(event.getEntity().getHealth() + event.getAmount());
 			event.setCanceled(true);
 		}
 	}
 	
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public static void ConvertHealEvent(LivingHealEvent event) {
-		if(event.getEntityLiving().hasEffect(EffectInit.CONVERT_OBJECT.get())){
-			if(event.getEntityLiving() instanceof Player) {
-				if(((Player)event.getEntityLiving()).getFoodData().getFoodLevel() >= 18){
+		if(event.getEntity().hasEffect(EffectInit.CONVERT_OBJECT.get())){
+			if(event.getEntity() instanceof Player) {
+				if(((Player)event.getEntity()).getFoodData().getFoodLevel() >= 18){
 					event.setAmount(event.getAmount() - 1);
 				}
 			}
@@ -111,10 +124,10 @@ public class ServerEvents {
 	
 	@SubscribeEvent(priority=EventPriority.LOWEST)
 	public static void onEntityJump(LivingJumpEvent event) {
-		if(event.getEntityLiving().hasEffect(EffectInit.GROUNDED_OBJECT.get())) {
-			Vec3 entityV3 = event.getEntityLiving().getDeltaMovement();
+		if(event.getEntity().hasEffect(EffectInit.GROUNDED_OBJECT.get())) {
+			Vec3 entityV3 = event.getEntity().getDeltaMovement();
 			if(entityV3.y>0)
-				event.getEntityLiving().setDeltaMovement(entityV3.x, 0, entityV3.z);
+				event.getEntity().setDeltaMovement(entityV3.x, 0, entityV3.z);
 		}
 	}
 	
@@ -132,8 +145,8 @@ public class ServerEvents {
 	
 	@SubscribeEvent
 	public static void onEntityDeath(LivingDeathEvent event) {
-		if(event.getEntityLiving().hasEffect(EffectInit.UNDEATH_OBJECT.get())) {
-			LivingEntity entity = event.getEntityLiving();
+		if(event.getEntity().hasEffect(EffectInit.UNDEATH_OBJECT.get())) {
+			LivingEntity entity = event.getEntity();
 			if(entity.hasEffect(EffectInit.DBOUND_OBJECT.get())) {
 				event.setCanceled(false);
 				return;
@@ -159,7 +172,7 @@ public class ServerEvents {
 	@SubscribeEvent
 	public static void onWeaponAttack(final AttackEntityEvent event) {
 		Entity entity = event.getTarget();
-        Player player = event.getPlayer();
+        Player player = event.getEntity();
         
         if(player.getAttackStrengthScale(0)< CraftConfig.TIPPED_COOLDOWN.get())
         	return;
@@ -167,29 +180,28 @@ public class ServerEvents {
         if (entity instanceof LivingEntity) {
             LivingEntity livingEntity = (LivingEntity)entity;
             
-            if(!TippedWeaponRecipe.isValidWeapon(player.getMainHandItem()))
-            	return;
-            
-            CompoundTag compoundTag = player.getMainHandItem().getTag();
-            if(compoundTag != null) {
-            	if(!CraftConfig.TIPPED_INFINITE.get()) {
-            		int charges = compoundTag.getInt("AttackCharges");
-            		
-            		if(charges <= 0) {
-            			compoundTag.remove("AttackCharges");
-            			compoundTag.remove("Potion");
-            		} else {
-                		addEffects(livingEntity, PotionUtils.getAllEffects(compoundTag.getCompound("Potion")));
-            			charges--;
-            			if(charges <= 0) {
-                			compoundTag.remove("Potion");
-                			compoundTag.remove("AttackCharges");
-            			}else {
-            				compoundTag.putInt("AttackCharges", charges);
-            			}
-            		}
-            	}else
-            		addEffects(livingEntity, PotionUtils.getAllEffects(compoundTag.getCompound("Potion")));
+            if(TippedWeaponRecipe.isValidWeapon(player.getMainHandItem())) {
+	            CompoundTag compoundTag = player.getMainHandItem().getTag();
+	            if(compoundTag != null) {
+	            	if(!CraftConfig.TIPPED_INFINITE.get()) {
+	            		int charges = compoundTag.getInt("AttackCharges");
+	            		
+	            		if(charges <= 0) {
+	            			compoundTag.remove("AttackCharges");
+	            			compoundTag.remove("Potion");
+	            		} else {
+	                		addEffects(livingEntity, PotionUtils.getAllEffects(compoundTag.getCompound("Potion")));
+	            			charges--;
+	            			if(charges <= 0) {
+	                			compoundTag.remove("Potion");
+	                			compoundTag.remove("AttackCharges");
+	            			}else {
+	            				compoundTag.putInt("AttackCharges", charges);
+	            			}
+	            		}
+	            	}else
+	            		addEffects(livingEntity, PotionUtils.getAllEffects(compoundTag.getCompound("Potion")));
+	            }
             }
         }
         
@@ -198,8 +210,39 @@ public class ServerEvents {
 		for(MobEffectInstance e: effectList)
 			livingEntity.addEffect(e);
 	}
-
 	
+	
+	public static void shouldDropItem(LivingEntity entity, ItemStack itemStack) {
+		if(entity.level.isClientSide())
+			return;
+		if(entity.hasEffect(EffectInit.DISARM_OBJECT.get()) && itemStack != null) {
+			if(entity instanceof AbstractVillager)
+				return;
+			if(isCursed(itemStack))
+				return;
+			if(itemStack.getItem() != Items.AIR){
+				int dropChance = EffectConfig.DISARM_CHANCE.get() * (entity.getEffect(EffectInit.DISARM_OBJECT.get()).getAmplifier() + 1);
+				Random random = new Random();
+				if(dropChance < random.nextInt(100)) 
+					return;
+				if(entity instanceof Player) {
+					((Player) entity).drop(itemStack, false);
+				}else {
+					entity.spawnAtLocation(itemStack).setPickUpDelay(40);
+				}
+				entity.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.AIR));
+			}
+		}
+	}
+	
+	private static boolean isCursed(ItemStack itemStack) {
+	  	Map<Enchantment, Integer> enchantments =  EnchantmentHelper.getEnchantments(itemStack);
+	  	if(enchantments.get(Enchantments.VANISHING_CURSE) == null && enchantments.get(Enchantments.BINDING_CURSE) == null)
+	  		return false;
+	  	return true;
+		
+	}
+
 	@SubscribeEvent
 	public static void AttachCapabilities(final AttachCapabilitiesEvent<Entity> event) {
 		if(event.getObject() instanceof LivingEntity) {
