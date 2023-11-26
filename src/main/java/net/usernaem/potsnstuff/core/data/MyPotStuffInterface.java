@@ -8,6 +8,8 @@ public interface MyPotStuffInterface extends INBTSerializable<CompoundTag>{
 	
 	boolean compareOldPos(Vec3 Pos);
 	
+	public boolean compareSleepPos(Vec3 Pos);
+	
 	boolean compareDimenString(String dimenString);
 	
 	Vec3 getAnchorPos();
@@ -17,6 +19,14 @@ public interface MyPotStuffInterface extends INBTSerializable<CompoundTag>{
 	Vec3 getOldPos();
 	
 	void setOldPos(Vec3 Pos);
+	
+	public Vec3 getSleepPos();
+	
+	public void setSleepPos(Vec3 Pos);
+	
+	public Boolean getCanSleep();
+	
+	public void setCanSleep(Boolean sleep);
 	
 	String getDimensionString();
 	

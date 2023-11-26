@@ -1,4 +1,4 @@
-version:3105
+version:3120
 autoJump:true
 autoSuggestions:true
 chatColors:true
@@ -39,7 +39,7 @@ biomeBlendRadius:2
 renderClouds:"true"
 resourcePacks:[]
 incompatibleResourcePacks:[]
-lastServer:
+lastServer:192.168.0.1
 lang:en_us
 soundDevice:""
 chatVisibility:0
@@ -67,7 +67,7 @@ tutorialStep:none
 mouseWheelSensitivity:1.0
 rawMouseInput:true
 glDebugVerbosity:1
-skipMultiplayerWarning:false
+skipMultiplayerWarning:true
 skipRealms32bitWarning:false
 hideMatchedNames:true
 joinedFirstServer:false
@@ -75,7 +75,7 @@ hideBundleTutorial:false
 syncChunkWrites:true
 showAutosaveIndicator:true
 allowServerListing:true
-chatPreview:true
+chatPreview:1
 onlyShowSecureChat:false
 key_key.attack:key.mouse.left
 key_key.use:key.mouse.right

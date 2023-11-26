@@ -12,7 +12,7 @@ import net.usernaem.potsnstuff.common.containers.PotionBagContainer;
 public class ConteinerTypeInit {
 	
     public static final DeferredRegister<MenuType<?>> CONTAINER_TYPES = DeferredRegister.create(
-			ForgeRegistries.CONTAINERS, PotsNStuff.MOD_ID_STRING);
+			ForgeRegistries.MENU_TYPES, PotsNStuff.MOD_ID_STRING);
     
     public static final RegistryObject<MenuType<PotionBagContainer>> POTION_BAG = CONTAINER_TYPES
 			.register("potion_bag", () ->  new MenuType<>(PotionBagContainer::new));
